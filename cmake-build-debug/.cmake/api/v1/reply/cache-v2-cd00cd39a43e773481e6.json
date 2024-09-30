@@ -15,7 +15,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/addr2line.exe"
+			"value" : "E:/msys2/mingw64/bin/addr2line.exe"
 		},
 		{
 			"name" : "CMAKE_AR",
@@ -31,7 +31,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/ar.exe"
+			"value" : "E:/msys2/mingw64/bin/ar.exe"
 		},
 		{
 			"name" : "CMAKE_BUILD_TYPE",
@@ -39,7 +39,7 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel ..."
 				}
 			],
 			"type" : "STRING",
@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "d:/vscode_c/data_structure/lab01/bulid"
+			"value" : "d:/vscode_c/data_structure/lab01/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "30"
+			"value" : "29"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -91,19 +91,15 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "3"
+			"value" : "6"
 		},
 		{
-			"name" : "CMAKE_COLOR_MAKEFILE",
+			"name" : "CMAKE_COLOR_DIAGNOSTICS",
 			"properties" : 
 			[
 				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
 					"name" : "HELPSTRING",
-					"value" : "Enable/Disable color output during build."
+					"value" : "Enable colored diagnostics throughout."
 				}
 			],
 			"type" : "BOOL",
@@ -119,7 +115,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "E:/CMake/bin/cmake.exe"
+			"value" : "E:/CLion 2024.2.2/bin/cmake/win/x64/bin/cmake.exe"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -131,7 +127,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "E:/CMake/bin/cpack.exe"
+			"value" : "E:/CLion 2024.2.2/bin/cmake/win/x64/bin/cpack.exe"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -143,7 +139,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "E:/CMake/bin/ctest.exe"
+			"value" : "E:/CLion 2024.2.2/bin/cmake/win/x64/bin/ctest.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -155,11 +151,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/g++.exe"
+			"value" : "E:/msys2/mingw64/bin/c++.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -175,7 +171,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/gcc-ar.exe"
+			"value" : "E:/msys2/mingw64/bin/gcc-ar.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_RANLIB",
@@ -191,7 +187,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/gcc-ranlib.exe"
+			"value" : "E:/msys2/mingw64/bin/gcc-ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -299,11 +295,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "C compiler"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/gcc.exe"
+			"value" : "E:/msys2/mingw64/bin/cc.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -319,7 +315,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/gcc-ar.exe"
+			"value" : "E:/msys2/mingw64/bin/gcc-ar.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -335,7 +331,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/gcc-ranlib.exe"
+			"value" : "E:/msys2/mingw64/bin/gcc-ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -447,19 +443,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/dlltool.exe"
-		},
-		{
-			"name" : "CMAKE_EDIT_COMMAND",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to cache edit program executable."
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "E:/CMake/bin/cmake-gui.exe"
+			"value" : "E:/msys2/mingw64/bin/dlltool.exe"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -558,12 +542,16 @@
 			"properties" : 
 			[
 				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "Enable/Disable output of compile commands during generation."
 				}
 			],
 			"type" : "BOOL",
-			"value" : "TRUE"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_EXTRA_GENERATOR",
@@ -587,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/pkgRedirects"
+			"value" : "D:/vscode_c/data_structure/lab01/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -599,7 +587,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "MinGW Makefiles"
+			"value" : "Ninja"
 		},
 		{
 			"name" : "CMAKE_GENERATOR_INSTANCE",
@@ -671,7 +659,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/Project"
+			"value" : "C:/Program Files (x86)/lab01"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -687,23 +675,19 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/ld.exe"
+			"value" : "E:/msys2/mingw64/bin/ld.exe"
 		},
 		{
 			"name" : "CMAKE_MAKE_PROGRAM",
 			"properties" : 
 			[
 				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
 					"name" : "HELPSTRING",
-					"value" : "Path to a program."
+					"value" : "make program"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/mingw32-make.exe"
+			"value" : "E:/CLion 2024.2.2/bin/ninja/win/x64/ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -799,7 +783,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/nm.exe"
+			"value" : "E:/msys2/mingw64/bin/nm.exe"
 		},
 		{
 			"name" : "CMAKE_NUMBER_OF_MAKEFILES",
@@ -811,7 +795,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1"
+			"value" : "4"
 		},
 		{
 			"name" : "CMAKE_OBJCOPY",
@@ -827,7 +811,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/objcopy.exe"
+			"value" : "E:/msys2/mingw64/bin/objcopy.exe"
 		},
 		{
 			"name" : "CMAKE_OBJDUMP",
@@ -843,7 +827,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/objdump.exe"
+			"value" : "E:/msys2/mingw64/bin/objdump.exe"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -891,7 +875,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Project"
+			"value" : "lab01"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -907,7 +891,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/ranlib.exe"
+			"value" : "E:/msys2/mingw64/bin/ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_RC_COMPILER",
@@ -923,7 +907,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/windres.exe"
+			"value" : "E:/msys2/mingw64/bin/windres.exe"
 		},
 		{
 			"name" : "CMAKE_RC_COMPILER_WORKS",
@@ -1031,7 +1015,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/readelf.exe"
+			"value" : "E:/msys2/mingw64/bin/readelf.exe"
 		},
 		{
 			"name" : "CMAKE_ROOT",
@@ -1043,7 +1027,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "E:/CMake/share/cmake-3.30"
+			"value" : "E:/CLion 2024.2.2/bin/cmake/win/x64/share/cmake-3.29"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1251,7 +1235,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "E:/mingw64/bin/strip.exe"
+			"value" : "E:/msys2/mingw64/bin/strip.exe"
 		},
 		{
 			"name" : "CMAKE_TAPI",
@@ -1286,88 +1270,16 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "Project_BINARY_DIR",
+			"name" : "Qt6Widgets_DIR",
 			"properties" : 
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "D:/vscode_c/data_structure/lab01/bulid"
-		},
-		{
-			"name" : "Project_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "Project_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "D:/vscode_c/data_structure/lab01"
-		},
-		{
-			"name" : "Qt5_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "The directory containing a CMake configuration file for Qt5."
+					"value" : "The directory containing a CMake configuration file for Qt6Widgets."
 				}
 			],
 			"type" : "PATH",
-			"value" : "Qt5_DIR-NOTFOUND"
-		},
-		{
-			"name" : "TaskManager_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "D:/vscode_c/data_structure/lab01/bulid"
-		},
-		{
-			"name" : "TaskManager_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "TaskManager_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "D:/vscode_c/data_structure/lab01"
+			"value" : "Qt6Widgets_DIR-NOTFOUND"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
@@ -1380,6 +1292,42 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "TRUE"
+		},
+		{
+			"name" : "lab01_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "D:/vscode_c/data_structure/lab01/cmake-build-debug"
+		},
+		{
+			"name" : "lab01_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "lab01_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "D:/vscode_c/data_structure/lab01"
 		}
 	],
 	"kind" : "cache",

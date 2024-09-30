@@ -115,6 +115,274 @@ depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
+#=============================================================================
+# Target rules for targets named main
+
+# Build rule for target.
+main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 main
+.PHONY : main
+
+# fast build rule for target.
+main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
+
+#=============================================================================
+# Target rules for targets named Utils
+
+# Build rule for target.
+Utils: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Utils
+.PHONY : Utils
+
+# fast build rule for target.
+Utils/fast:
+	$(MAKE) $(MAKESILENT) -f src\utils\CMakeFiles\Utils.dir\build.make src/utils/CMakeFiles/Utils.dir/build
+.PHONY : Utils/fast
+
+#=============================================================================
+# Target rules for targets named Task
+
+# Build rule for target.
+Task: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Task
+.PHONY : Task
+
+# fast build rule for target.
+Task/fast:
+	$(MAKE) $(MAKESILENT) -f src\task\CMakeFiles\Task.dir\build.make src/task/CMakeFiles/Task.dir/build
+.PHONY : Task/fast
+
+#=============================================================================
+# Target rules for targets named Task_Manager
+
+# Build rule for target.
+Task_Manager: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Task_Manager
+.PHONY : Task_Manager
+
+# fast build rule for target.
+Task_Manager/fast:
+	$(MAKE) $(MAKESILENT) -f src\task_manager\CMakeFiles\Task_Manager.dir\build.make src/task_manager/CMakeFiles/Task_Manager.dir/build
+.PHONY : Task_Manager/fast
+
+main.obj: main.cpp.obj
+.PHONY : main.obj
+
+# target to build an object file
+main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.obj
+.PHONY : main.cpp.obj
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.s
+.PHONY : main.cpp.s
+
+src/interface/qt_interface/main_window.obj: src/interface/qt_interface/main_window.cpp.obj
+.PHONY : src/interface/qt_interface/main_window.obj
+
+# target to build an object file
+src/interface/qt_interface/main_window.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj
+.PHONY : src/interface/qt_interface/main_window.cpp.obj
+
+src/interface/qt_interface/main_window.i: src/interface/qt_interface/main_window.cpp.i
+.PHONY : src/interface/qt_interface/main_window.i
+
+# target to preprocess a source file
+src/interface/qt_interface/main_window.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.i
+.PHONY : src/interface/qt_interface/main_window.cpp.i
+
+src/interface/qt_interface/main_window.s: src/interface/qt_interface/main_window.cpp.s
+.PHONY : src/interface/qt_interface/main_window.s
+
+# target to generate assembly for a file
+src/interface/qt_interface/main_window.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.s
+.PHONY : src/interface/qt_interface/main_window.cpp.s
+
+src/interface/user_interface.obj: src/interface/user_interface.cpp.obj
+.PHONY : src/interface/user_interface.obj
+
+# target to build an object file
+src/interface/user_interface.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/interface/user_interface.cpp.obj
+.PHONY : src/interface/user_interface.cpp.obj
+
+src/interface/user_interface.i: src/interface/user_interface.cpp.i
+.PHONY : src/interface/user_interface.i
+
+# target to preprocess a source file
+src/interface/user_interface.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/interface/user_interface.cpp.i
+.PHONY : src/interface/user_interface.cpp.i
+
+src/interface/user_interface.s: src/interface/user_interface.cpp.s
+.PHONY : src/interface/user_interface.s
+
+# target to generate assembly for a file
+src/interface/user_interface.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/interface/user_interface.cpp.s
+.PHONY : src/interface/user_interface.cpp.s
+
+src/task/Task.obj: src/task/Task.cpp.obj
+.PHONY : src/task/Task.obj
+
+# target to build an object file
+src/task/Task.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task/Task.cpp.obj
+.PHONY : src/task/Task.cpp.obj
+
+src/task/Task.i: src/task/Task.cpp.i
+.PHONY : src/task/Task.i
+
+# target to preprocess a source file
+src/task/Task.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task/Task.cpp.i
+.PHONY : src/task/Task.cpp.i
+
+src/task/Task.s: src/task/Task.cpp.s
+.PHONY : src/task/Task.s
+
+# target to generate assembly for a file
+src/task/Task.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task/Task.cpp.s
+.PHONY : src/task/Task.cpp.s
+
+src/task/reminder.obj: src/task/reminder.cpp.obj
+.PHONY : src/task/reminder.obj
+
+# target to build an object file
+src/task/reminder.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task/reminder.cpp.obj
+.PHONY : src/task/reminder.cpp.obj
+
+src/task/reminder.i: src/task/reminder.cpp.i
+.PHONY : src/task/reminder.i
+
+# target to preprocess a source file
+src/task/reminder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task/reminder.cpp.i
+.PHONY : src/task/reminder.cpp.i
+
+src/task/reminder.s: src/task/reminder.cpp.s
+.PHONY : src/task/reminder.s
+
+# target to generate assembly for a file
+src/task/reminder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task/reminder.cpp.s
+.PHONY : src/task/reminder.cpp.s
+
+src/task_manager/DLinkList.obj: src/task_manager/DLinkList.cpp.obj
+.PHONY : src/task_manager/DLinkList.obj
+
+# target to build an object file
+src/task_manager/DLinkList.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj
+.PHONY : src/task_manager/DLinkList.cpp.obj
+
+src/task_manager/DLinkList.i: src/task_manager/DLinkList.cpp.i
+.PHONY : src/task_manager/DLinkList.i
+
+# target to preprocess a source file
+src/task_manager/DLinkList.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.i
+.PHONY : src/task_manager/DLinkList.cpp.i
+
+src/task_manager/DLinkList.s: src/task_manager/DLinkList.cpp.s
+.PHONY : src/task_manager/DLinkList.s
+
+# target to generate assembly for a file
+src/task_manager/DLinkList.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.s
+.PHONY : src/task_manager/DLinkList.cpp.s
+
+src/task_manager/LinkList.obj: src/task_manager/LinkList.cpp.obj
+.PHONY : src/task_manager/LinkList.obj
+
+# target to build an object file
+src/task_manager/LinkList.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task_manager/LinkList.cpp.obj
+.PHONY : src/task_manager/LinkList.cpp.obj
+
+src/task_manager/LinkList.i: src/task_manager/LinkList.cpp.i
+.PHONY : src/task_manager/LinkList.i
+
+# target to preprocess a source file
+src/task_manager/LinkList.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task_manager/LinkList.cpp.i
+.PHONY : src/task_manager/LinkList.cpp.i
+
+src/task_manager/LinkList.s: src/task_manager/LinkList.cpp.s
+.PHONY : src/task_manager/LinkList.s
+
+# target to generate assembly for a file
+src/task_manager/LinkList.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task_manager/LinkList.cpp.s
+.PHONY : src/task_manager/LinkList.cpp.s
+
+src/task_manager/SeqList.obj: src/task_manager/SeqList.cpp.obj
+.PHONY : src/task_manager/SeqList.obj
+
+# target to build an object file
+src/task_manager/SeqList.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task_manager/SeqList.cpp.obj
+.PHONY : src/task_manager/SeqList.cpp.obj
+
+src/task_manager/SeqList.i: src/task_manager/SeqList.cpp.i
+.PHONY : src/task_manager/SeqList.i
+
+# target to preprocess a source file
+src/task_manager/SeqList.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task_manager/SeqList.cpp.i
+.PHONY : src/task_manager/SeqList.cpp.i
+
+src/task_manager/SeqList.s: src/task_manager/SeqList.cpp.s
+.PHONY : src/task_manager/SeqList.s
+
+# target to generate assembly for a file
+src/task_manager/SeqList.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/task_manager/SeqList.cpp.s
+.PHONY : src/task_manager/SeqList.cpp.s
+
+src/utils/Utils.obj: src/utils/Utils.cpp.obj
+.PHONY : src/utils/Utils.obj
+
+# target to build an object file
+src/utils/Utils.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/utils/Utils.cpp.obj
+.PHONY : src/utils/Utils.cpp.obj
+
+src/utils/Utils.i: src/utils/Utils.cpp.i
+.PHONY : src/utils/Utils.i
+
+# target to preprocess a source file
+src/utils/Utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/utils/Utils.cpp.i
+.PHONY : src/utils/Utils.cpp.i
+
+src/utils/Utils.s: src/utils/Utils.cpp.s
+.PHONY : src/utils/Utils.s
+
+# target to generate assembly for a file
+src/utils/Utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/utils/Utils.cpp.s
+.PHONY : src/utils/Utils.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -123,6 +391,37 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... Task
+	@echo ... Task_Manager
+	@echo ... Utils
+	@echo ... main
+	@echo ... main.obj
+	@echo ... main.i
+	@echo ... main.s
+	@echo ... src/interface/qt_interface/main_window.obj
+	@echo ... src/interface/qt_interface/main_window.i
+	@echo ... src/interface/qt_interface/main_window.s
+	@echo ... src/interface/user_interface.obj
+	@echo ... src/interface/user_interface.i
+	@echo ... src/interface/user_interface.s
+	@echo ... src/task/Task.obj
+	@echo ... src/task/Task.i
+	@echo ... src/task/Task.s
+	@echo ... src/task/reminder.obj
+	@echo ... src/task/reminder.i
+	@echo ... src/task/reminder.s
+	@echo ... src/task_manager/DLinkList.obj
+	@echo ... src/task_manager/DLinkList.i
+	@echo ... src/task_manager/DLinkList.s
+	@echo ... src/task_manager/LinkList.obj
+	@echo ... src/task_manager/LinkList.i
+	@echo ... src/task_manager/LinkList.s
+	@echo ... src/task_manager/SeqList.obj
+	@echo ... src/task_manager/SeqList.i
+	@echo ... src/task_manager/SeqList.s
+	@echo ... src/utils/Utils.obj
+	@echo ... src/utils/Utils.i
+	@echo ... src/utils/Utils.s
 .PHONY : help
 
 

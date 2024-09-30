@@ -156,7 +156,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Project
+CMAKE_PROJECT_NAME:STATIC=lab01
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=E:/mingw64/bin/ranlib.exe
@@ -253,6 +253,9 @@ Project_SOURCE_DIR:STATIC=D:/vscode_c/data_structure/lab01
 //The directory containing a CMake configuration file for Qt5.
 Qt5_DIR:PATH=Qt5_DIR-NOTFOUND
 
+//The directory containing a CMake configuration file for Qt6Widgets.
+Qt6Widgets_DIR:PATH=Qt6Widgets_DIR-NOTFOUND
+
 //Value Computed by CMake
 TaskManager_BINARY_DIR:STATIC=D:/vscode_c/data_structure/lab01/bulid
 
@@ -261,6 +264,15 @@ TaskManager_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 TaskManager_SOURCE_DIR:STATIC=D:/vscode_c/data_structure/lab01
+
+//Value Computed by CMake
+lab01_BINARY_DIR:STATIC=D:/vscode_c/data_structure/lab01/bulid
+
+//Value Computed by CMake
+lab01_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+lab01_SOURCE_DIR:STATIC=D:/vscode_c/data_structure/lab01
 
 
 ########################
@@ -369,7 +381,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

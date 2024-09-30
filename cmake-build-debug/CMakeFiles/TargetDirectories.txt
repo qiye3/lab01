@@ -1,0 +1,12 @@
+D:/vscode_c/data_structure/lab01/cmake-build-debug/CMakeFiles/main.dir
+D:/vscode_c/data_structure/lab01/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/vscode_c/data_structure/lab01/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/vscode_c/data_structure/lab01/cmake-build-debug/src/utils/CMakeFiles/Utils.dir
+D:/vscode_c/data_structure/lab01/cmake-build-debug/src/utils/CMakeFiles/edit_cache.dir
+D:/vscode_c/data_structure/lab01/cmake-build-debug/src/utils/CMakeFiles/rebuild_cache.dir
+D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task/CMakeFiles/Task.dir
+D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task/CMakeFiles/edit_cache.dir
+D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task/CMakeFiles/rebuild_cache.dir
+D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task_manager/CMakeFiles/Task_Manager.dir
+D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task_manager/CMakeFiles/edit_cache.dir
+D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task_manager/CMakeFiles/rebuild_cache.dir

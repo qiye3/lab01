@@ -12,6 +12,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.30.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.30.3/CMakeRCCompiler.cmake"
   "CMakeFiles/3.30.3/CMakeSystem.cmake"
+  "D:/vscode_c/data_structure/lab01/src/task/CMakeLists.txt"
+  "D:/vscode_c/data_structure/lab01/src/task_manager/CMakeLists.txt"
+  "D:/vscode_c/data_structure/lab01/src/utils/CMakeLists.txt"
   "E:/CMake/share/cmake-3.30/Modules/CMakeCInformation.cmake"
   "E:/CMake/share/cmake-3.30/Modules/CMakeCXXInformation.cmake"
   "E:/CMake/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake"
@@ -45,8 +48,15 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/utils/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/task/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/task_manager/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/main.dir/DependInfo.cmake"
+  "src/utils/CMakeFiles/Utils.dir/DependInfo.cmake"
+  "src/task/CMakeFiles/Task.dir/DependInfo.cmake"
+  "src/task_manager/CMakeFiles/Task_Manager.dir/DependInfo.cmake"
   )

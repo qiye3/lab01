@@ -2,7 +2,7 @@
 #define LINKLIST_HPP
 
 #include<iostream>
-#include<Task.hpp>
+#include"../task/Task.hpp"
 using namespace std;
 
 class LinkList{
@@ -33,34 +33,33 @@ class LinkList{
 
         bool remove(int i, Task& t);
 
-        bool isEmpty();
+        bool remove_by_name(string name);
 
-        int Length();
+        bool isEmpty() const;
 
-        void display();
+        int Length() const;
+
+        void display() const;
 
         void clear();
 
         // ----------排序-----------//
 
-        void sort(compare_func compare);
+        void sort(int op);
 
         void reverse();
 
         // ----------筛选-----------//
 
-        LinkList filter_by_priority(int priority);
-
-        LinkList filter_by_deadline(string deadline, string op);
-
-        LinkList filter_by_status(bool isDone);
+        LinkList filt_list(int op, string value); 
 
         // ----------修改-----------//
 
-        bool change(int i, string op);
+        bool change(int i, int op);
 
+        // ----------读取-----------//
 
-
+        void read_from_txt(string filename, string filepath = "");
 };
 
 

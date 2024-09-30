@@ -1,0 +1,17 @@
+# ninja log v6
+95	314	7493785730103234	CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj	8ca28a34712e87ce
+106	319	7493785730207273	CMakeFiles/main.dir/src/interface/user_interface.cpp.obj	114292d30844b8e6
+130	360	7493785730447506	CMakeFiles/main.dir/src/task/reminder.cpp.obj	17dc91758698dfe1
+144	380	7493785730582631	CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj	d95bb7c224c337b7
+168	381	7493785730822853	CMakeFiles/main.dir/src/task_manager/SeqList.cpp.obj	3da1148693d3d144
+5	698	7493788150879692	src/utils/CMakeFiles/Utils.dir/Utils.cpp.obj	d3156600da91c9e3
+698	811	7493788157810796	src/utils/libUtils.a	d5bf6c3a89f2bc13
+14	663	7493788150971222	src/task/CMakeFiles/Task.dir/Task.cpp.obj	6a46975867686266
+4	356	7493831117287626	CMakeFiles/main.dir/main.cpp.obj	5d4eedd089cdf145
+664	789	7493788157466093	src/task/libTask.a	1460ebce12fb4ef8
+41	724	7493788151241575	CMakeFiles/main.dir/src/task/Task.cpp.obj	edc85a7d660a8048
+5	403	7493831873604989	src/task_manager/CMakeFiles/Task_Manager.dir/LinkList.cpp.obj	b5f10b57deefde69
+60	765	7493788151431123	CMakeFiles/main.dir/src/utils/Utils.cpp.obj	e0be897db11cd56d
+14	426	7493831873695282	CMakeFiles/main.dir/src/task_manager/LinkList.cpp.obj	77a04ab3594e5d8f
+403	492	7493831877587276	src/task_manager/libTask_Manager.a	593bd08f4c95f7a0
+492	606	7493831878481742	main.exe	114c86aec72c0aee

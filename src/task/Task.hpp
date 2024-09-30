@@ -20,15 +20,16 @@ class Task{
         // 任务截止日期
         string deadline;
         // 任务创建日期
-        string create_time;
+        string createTime;
 
     public:
         enum op{
-            Name,
-            Priority,
-            Deadline,
-            Status,
-            Description
+            Name = 0,
+            Priority = 1,
+            Deadline = 2,
+            Status = 3,
+            Description = 4,
+            CreateTime = 5
         };
 
         //----构造、析构、展示函数----//
@@ -37,21 +38,21 @@ class Task{
 
         ~Task();
 
-        void create_task(string name, string description, int priority, string deadline);
+        void create_task();
 
         void display();
 
         // --------修改变量---------//
 
-        void change_name(string name){name = name;};
+        void change_name(string new_name){name = new_name;};
 
-        void change_description(string description){description = description;};
+        void change_description(string new_description){description = new_description;};
 
-        void change_priority(int priority){priority = priority;};
+        void change_priority(int priority);
 
-        void change_deadline(string deadline){deadline = deadline;};
+        void change_deadline(string new_deadline){deadline = new_deadline;};
 
-        void change_status(bool isDone){isDone = isDone;};
+        void change_status(){isDone = !isDone;};
 
         // --------获取变量的值-------//
 
@@ -65,21 +66,54 @@ class Task{
 
         bool get_status(){return isDone;};
 
-        string get_create_time(){return create_time;};
+        string get_create_time(){return createTime;};
 
         // --------比较函数---------//
 
-        bool compare(const Task& other, op o){
+        bool compare(Task& other, int o){
             switch(o){
+                // 任务名称：升序
                 case Name:
                     return name < other.name;
+
+                // 优先级：降序
                 case Priority:
-                    return priority < other.priority;
+                    return priority > other.priority;
+                
+                // 截止日期：升序
                 case Deadline:
                     return deadline < other.deadline;
+
+                // 状态：未完成在前
                 case Status:
                     return isDone < other.isDone;
+
+                // 创建日期：升序
+                case CreateTime:
+                    return createTime < other.createTime;
+
+                default: return false; 
             }
+        }
+
+        // --------筛选函数---------//
+        bool filter(int o, string value){
+            switch(o){
+                case Name:
+                    return name == value;
+                case Priority:
+                    return priority == stoi(value);
+                case Deadline:
+                    return deadline == value;
+                case Status:
+                    return isDone == (value == "true");
+                case Description:
+                    return description == value;
+                case CreateTime:
+                    return createTime == value;
+                default: return false;
+            }
+
         }
 
 
