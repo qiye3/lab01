@@ -1,0 +1,46 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 0,
+			"id" : "Utils::@f1b38b22aeb65474a6c5"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "QtInterface::@fc566082e052e3788ba1"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "Task::@5ce37fece1e4ea928e3d"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "Task_Manager::@c1fe7af6d477919fecb8"
+		}
+	],
+	"id" : "main_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+	"isGeneratorProvided" : true,
+	"name" : "main_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

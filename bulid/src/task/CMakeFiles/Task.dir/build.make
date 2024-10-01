@@ -68,11 +68,33 @@ include src/task/CMakeFiles/Task.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/task/CMakeFiles/Task.dir/flags.make
 
+src/task/Task_autogen/timestamp: E:/Qt/6.7.2/mingw_64/./bin/moc.exe
+src/task/Task_autogen/timestamp: E:/Qt/6.7.2/mingw_64/./bin/uic.exe
+src/task/Task_autogen/timestamp: src/task/CMakeFiles/Task.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target Task"
+	cd /d D:\vscode_c\data_structure\lab01\bulid\src\task && E:\CMake\bin\cmake.exe -E cmake_autogen D:/vscode_c/data_structure/lab01/bulid/src/task/CMakeFiles/Task_autogen.dir/AutogenInfo.json Debug
+	cd /d D:\vscode_c\data_structure\lab01\bulid\src\task && E:\CMake\bin\cmake.exe -E touch D:/vscode_c/data_structure/lab01/bulid/src/task/Task_autogen/timestamp
+
+src/task/CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.obj: src/task/CMakeFiles/Task.dir/flags.make
+src/task/CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.obj: src/task/CMakeFiles/Task.dir/includes_CXX.rsp
+src/task/CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.obj: src/task/Task_autogen/mocs_compilation.cpp
+src/task/CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.obj: src/task/CMakeFiles/Task.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/task/CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.obj"
+	cd /d D:\vscode_c\data_structure\lab01\bulid\src\task && E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/task/CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.obj -MF CMakeFiles\Task.dir\Task_autogen\mocs_compilation.cpp.obj.d -o CMakeFiles\Task.dir\Task_autogen\mocs_compilation.cpp.obj -c D:\vscode_c\data_structure\lab01\bulid\src\task\Task_autogen\mocs_compilation.cpp
+
+src/task/CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.i"
+	cd /d D:\vscode_c\data_structure\lab01\bulid\src\task && E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode_c\data_structure\lab01\bulid\src\task\Task_autogen\mocs_compilation.cpp > CMakeFiles\Task.dir\Task_autogen\mocs_compilation.cpp.i
+
+src/task/CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.s"
+	cd /d D:\vscode_c\data_structure\lab01\bulid\src\task && E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode_c\data_structure\lab01\bulid\src\task\Task_autogen\mocs_compilation.cpp -o CMakeFiles\Task.dir\Task_autogen\mocs_compilation.cpp.s
+
 src/task/CMakeFiles/Task.dir/Task.cpp.obj: src/task/CMakeFiles/Task.dir/flags.make
 src/task/CMakeFiles/Task.dir/Task.cpp.obj: src/task/CMakeFiles/Task.dir/includes_CXX.rsp
 src/task/CMakeFiles/Task.dir/Task.cpp.obj: D:/vscode_c/data_structure/lab01/src/task/Task.cpp
 src/task/CMakeFiles/Task.dir/Task.cpp.obj: src/task/CMakeFiles/Task.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/task/CMakeFiles/Task.dir/Task.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/task/CMakeFiles/Task.dir/Task.cpp.obj"
 	cd /d D:\vscode_c\data_structure\lab01\bulid\src\task && E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/task/CMakeFiles/Task.dir/Task.cpp.obj -MF CMakeFiles\Task.dir\Task.cpp.obj.d -o CMakeFiles\Task.dir\Task.cpp.obj -c D:\vscode_c\data_structure\lab01\src\task\Task.cpp
 
 src/task/CMakeFiles/Task.dir/Task.cpp.i: cmake_force
@@ -85,15 +107,17 @@ src/task/CMakeFiles/Task.dir/Task.cpp.s: cmake_force
 
 # Object files for target Task
 Task_OBJECTS = \
+"CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.obj" \
 "CMakeFiles/Task.dir/Task.cpp.obj"
 
 # External object files for target Task
 Task_EXTERNAL_OBJECTS =
 
+src/task/libTask.a: src/task/CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.obj
 src/task/libTask.a: src/task/CMakeFiles/Task.dir/Task.cpp.obj
 src/task/libTask.a: src/task/CMakeFiles/Task.dir/build.make
 src/task/libTask.a: src/task/CMakeFiles/Task.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libTask.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libTask.a"
 	cd /d D:\vscode_c\data_structure\lab01\bulid\src\task && $(CMAKE_COMMAND) -P CMakeFiles\Task.dir\cmake_clean_target.cmake
 	cd /d D:\vscode_c\data_structure\lab01\bulid\src\task && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Task.dir\link.txt --verbose=$(VERBOSE)
 
@@ -105,7 +129,7 @@ src/task/CMakeFiles/Task.dir/clean:
 	cd /d D:\vscode_c\data_structure\lab01\bulid\src\task && $(CMAKE_COMMAND) -P CMakeFiles\Task.dir\cmake_clean.cmake
 .PHONY : src/task/CMakeFiles/Task.dir/clean
 
-src/task/CMakeFiles/Task.dir/depend:
+src/task/CMakeFiles/Task.dir/depend: src/task/Task_autogen/timestamp
 	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\vscode_c\data_structure\lab01 D:\vscode_c\data_structure\lab01\src\task D:\vscode_c\data_structure\lab01\bulid D:\vscode_c\data_structure\lab01\bulid\src\task D:\vscode_c\data_structure\lab01\bulid\src\task\CMakeFiles\Task.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/task/CMakeFiles/Task.dir/depend
 

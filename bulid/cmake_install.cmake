@@ -37,11 +37,22 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "E:/mingw64/bin/objdump.exe")
 endif()
 
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "D:/vscode_c/data_structure/lab01/bulid/main.exe")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/main.exe" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/main.exe")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "E:/mingw64/bin/strip.exe" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/main.exe")
+    endif()
+  endif()
+endif()
+
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("D:/vscode_c/data_structure/lab01/bulid/src/utils/cmake_install.cmake")
   include("D:/vscode_c/data_structure/lab01/bulid/src/task/cmake_install.cmake")
   include("D:/vscode_c/data_structure/lab01/bulid/src/task_manager/cmake_install.cmake")
+  include("D:/vscode_c/data_structure/lab01/bulid/src/qt_interface/cmake_install.cmake")
 
 endif()
 

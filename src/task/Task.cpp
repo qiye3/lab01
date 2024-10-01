@@ -13,6 +13,13 @@ Task::Task(){
 Task::~Task(){
 }
 
+void Task::change_task(string new_name, string new_description, int new_priority, string new_deadline){
+    name = new_name;
+    description = new_description;
+    priority = new_priority;
+    deadline = new_deadline;
+}
+
 void Task::create_task(){
     cout<<"请输入任务名称：";
     cin.ignore(); // 忽略前一个输入留下的换行符

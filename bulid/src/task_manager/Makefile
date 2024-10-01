@@ -84,6 +84,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	E:\CMake\bin\cmake.exe -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	E:\CMake\bin\cmake.exe -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	E:\CMake\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	E:\CMake\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	E:\CMake\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	E:\CMake\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	cd /d D:\vscode_c\data_structure\lab01\bulid && $(CMAKE_COMMAND) -E cmake_progress_start D:\vscode_c\data_structure\lab01\bulid\CMakeFiles D:\vscode_c\data_structure\lab01\bulid\src\task_manager\\CMakeFiles\progress.marks
@@ -129,6 +174,34 @@ Task_Manager/fast:
 	cd /d D:\vscode_c\data_structure\lab01\bulid && $(MAKE) $(MAKESILENT) -f src\task_manager\CMakeFiles\Task_Manager.dir\build.make src/task_manager/CMakeFiles/Task_Manager.dir/build
 .PHONY : Task_Manager/fast
 
+# Convenience name for target.
+src/task_manager/CMakeFiles/Task_Manager_autogen_timestamp_deps.dir/rule:
+	cd /d D:\vscode_c\data_structure\lab01\bulid && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/task_manager/CMakeFiles/Task_Manager_autogen_timestamp_deps.dir/rule
+.PHONY : src/task_manager/CMakeFiles/Task_Manager_autogen_timestamp_deps.dir/rule
+
+# Convenience name for target.
+Task_Manager_autogen_timestamp_deps: src/task_manager/CMakeFiles/Task_Manager_autogen_timestamp_deps.dir/rule
+.PHONY : Task_Manager_autogen_timestamp_deps
+
+# fast build rule for target.
+Task_Manager_autogen_timestamp_deps/fast:
+	cd /d D:\vscode_c\data_structure\lab01\bulid && $(MAKE) $(MAKESILENT) -f src\task_manager\CMakeFiles\Task_Manager_autogen_timestamp_deps.dir\build.make src/task_manager/CMakeFiles/Task_Manager_autogen_timestamp_deps.dir/build
+.PHONY : Task_Manager_autogen_timestamp_deps/fast
+
+# Convenience name for target.
+src/task_manager/CMakeFiles/Task_Manager_autogen.dir/rule:
+	cd /d D:\vscode_c\data_structure\lab01\bulid && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/task_manager/CMakeFiles/Task_Manager_autogen.dir/rule
+.PHONY : src/task_manager/CMakeFiles/Task_Manager_autogen.dir/rule
+
+# Convenience name for target.
+Task_Manager_autogen: src/task_manager/CMakeFiles/Task_Manager_autogen.dir/rule
+.PHONY : Task_Manager_autogen
+
+# fast build rule for target.
+Task_Manager_autogen/fast:
+	cd /d D:\vscode_c\data_structure\lab01\bulid && $(MAKE) $(MAKESILENT) -f src\task_manager\CMakeFiles\Task_Manager_autogen.dir\build.make src/task_manager/CMakeFiles/Task_Manager_autogen.dir/build
+.PHONY : Task_Manager_autogen/fast
+
 LinkList.obj: LinkList.cpp.obj
 .PHONY : LinkList.obj
 
@@ -153,6 +226,30 @@ LinkList.cpp.s:
 	cd /d D:\vscode_c\data_structure\lab01\bulid && $(MAKE) $(MAKESILENT) -f src\task_manager\CMakeFiles\Task_Manager.dir\build.make src/task_manager/CMakeFiles/Task_Manager.dir/LinkList.cpp.s
 .PHONY : LinkList.cpp.s
 
+Task_Manager_autogen/mocs_compilation.obj: Task_Manager_autogen/mocs_compilation.cpp.obj
+.PHONY : Task_Manager_autogen/mocs_compilation.obj
+
+# target to build an object file
+Task_Manager_autogen/mocs_compilation.cpp.obj:
+	cd /d D:\vscode_c\data_structure\lab01\bulid && $(MAKE) $(MAKESILENT) -f src\task_manager\CMakeFiles\Task_Manager.dir\build.make src/task_manager/CMakeFiles/Task_Manager.dir/Task_Manager_autogen/mocs_compilation.cpp.obj
+.PHONY : Task_Manager_autogen/mocs_compilation.cpp.obj
+
+Task_Manager_autogen/mocs_compilation.i: Task_Manager_autogen/mocs_compilation.cpp.i
+.PHONY : Task_Manager_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+Task_Manager_autogen/mocs_compilation.cpp.i:
+	cd /d D:\vscode_c\data_structure\lab01\bulid && $(MAKE) $(MAKESILENT) -f src\task_manager\CMakeFiles\Task_Manager.dir\build.make src/task_manager/CMakeFiles/Task_Manager.dir/Task_Manager_autogen/mocs_compilation.cpp.i
+.PHONY : Task_Manager_autogen/mocs_compilation.cpp.i
+
+Task_Manager_autogen/mocs_compilation.s: Task_Manager_autogen/mocs_compilation.cpp.s
+.PHONY : Task_Manager_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+Task_Manager_autogen/mocs_compilation.cpp.s:
+	cd /d D:\vscode_c\data_structure\lab01\bulid && $(MAKE) $(MAKESILENT) -f src\task_manager\CMakeFiles\Task_Manager.dir\build.make src/task_manager/CMakeFiles/Task_Manager.dir/Task_Manager_autogen/mocs_compilation.cpp.s
+.PHONY : Task_Manager_autogen/mocs_compilation.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -160,11 +257,20 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... edit_cache
+	@echo ... install
+	@echo ... install/local
+	@echo ... install/strip
+	@echo ... list_install_components
 	@echo ... rebuild_cache
+	@echo ... Task_Manager_autogen
+	@echo ... Task_Manager_autogen_timestamp_deps
 	@echo ... Task_Manager
 	@echo ... LinkList.obj
 	@echo ... LinkList.i
 	@echo ... LinkList.s
+	@echo ... Task_Manager_autogen/mocs_compilation.obj
+	@echo ... Task_Manager_autogen/mocs_compilation.i
+	@echo ... Task_Manager_autogen/mocs_compilation.s
 .PHONY : help
 
 

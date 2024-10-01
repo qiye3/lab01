@@ -5,6 +5,7 @@ src/task/CMakeFiles/Task.dir/Task.cpp.obj: \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h \
+ E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/pstl/pstl_config.h \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/stringfwd.h \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/memoryfwd.h \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/char_traits.h \
@@ -73,6 +74,10 @@ src/task/CMakeFiles/Task.dir/Task.cpp.obj: \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/ext/alloc_traits.h \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/alloc_traits.h \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/stl_construct.h \
+ E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/string_view \
+ E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/functional_hash.h \
+ E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/hash_bytes.h \
+ E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/string_view.tcc \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/ext/string_conversions.h \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/cstdlib \
  E:/mingw64/x86_64-w64-mingw32/include/stdlib.h \
@@ -88,8 +93,6 @@ src/task/CMakeFiles/Task.dir/Task.cpp.obj: \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/cstdio \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/cerrno \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/charconv.h \
- E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/functional_hash.h \
- E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/hash_bytes.h \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/basic_string.tcc \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/iostream \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/ostream \
@@ -142,4 +145,7 @@ src/task/CMakeFiles/Task.dir/Task.cpp.obj: \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/codecvt.h \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/locale_facets_nonio.tcc \
  E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/locale_conv.h \
+ E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/quoted_string.h \
+ E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/sstream \
+ E:/mingw64/lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/bits/sstream.tcc \
  D:/vscode_c/data_structure/lab01/src/utils/Utils.hpp

@@ -84,6 +84,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	E:\CMake\bin\cmake.exe -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	E:\CMake\bin\cmake.exe -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	E:\CMake\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	E:\CMake\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	E:\CMake\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	E:\CMake\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\vscode_c\data_structure\lab01\bulid\CMakeFiles D:\vscode_c\data_structure\lab01\bulid\\CMakeFiles\progress.marks
@@ -129,6 +174,32 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
+# Target rules for targets named main_autogen_timestamp_deps
+
+# Build rule for target.
+main_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 main_autogen_timestamp_deps
+.PHONY : main_autogen_timestamp_deps
+
+# fast build rule for target.
+main_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main_autogen_timestamp_deps.dir\build.make CMakeFiles/main_autogen_timestamp_deps.dir/build
+.PHONY : main_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named main_autogen
+
+# Build rule for target.
+main_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 main_autogen
+.PHONY : main_autogen
+
+# fast build rule for target.
+main_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main_autogen.dir\build.make CMakeFiles/main_autogen.dir/build
+.PHONY : main_autogen/fast
+
+#=============================================================================
 # Target rules for targets named Utils
 
 # Build rule for target.
@@ -140,6 +211,32 @@ Utils: cmake_check_build_system
 Utils/fast:
 	$(MAKE) $(MAKESILENT) -f src\utils\CMakeFiles\Utils.dir\build.make src/utils/CMakeFiles/Utils.dir/build
 .PHONY : Utils/fast
+
+#=============================================================================
+# Target rules for targets named Utils_autogen_timestamp_deps
+
+# Build rule for target.
+Utils_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Utils_autogen_timestamp_deps
+.PHONY : Utils_autogen_timestamp_deps
+
+# fast build rule for target.
+Utils_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f src\utils\CMakeFiles\Utils_autogen_timestamp_deps.dir\build.make src/utils/CMakeFiles/Utils_autogen_timestamp_deps.dir/build
+.PHONY : Utils_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named Utils_autogen
+
+# Build rule for target.
+Utils_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Utils_autogen
+.PHONY : Utils_autogen
+
+# fast build rule for target.
+Utils_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f src\utils\CMakeFiles\Utils_autogen.dir\build.make src/utils/CMakeFiles/Utils_autogen.dir/build
+.PHONY : Utils_autogen/fast
 
 #=============================================================================
 # Target rules for targets named Task
@@ -155,6 +252,32 @@ Task/fast:
 .PHONY : Task/fast
 
 #=============================================================================
+# Target rules for targets named Task_autogen_timestamp_deps
+
+# Build rule for target.
+Task_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Task_autogen_timestamp_deps
+.PHONY : Task_autogen_timestamp_deps
+
+# fast build rule for target.
+Task_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f src\task\CMakeFiles\Task_autogen_timestamp_deps.dir\build.make src/task/CMakeFiles/Task_autogen_timestamp_deps.dir/build
+.PHONY : Task_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named Task_autogen
+
+# Build rule for target.
+Task_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Task_autogen
+.PHONY : Task_autogen
+
+# fast build rule for target.
+Task_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f src\task\CMakeFiles\Task_autogen.dir\build.make src/task/CMakeFiles/Task_autogen.dir/build
+.PHONY : Task_autogen/fast
+
+#=============================================================================
 # Target rules for targets named Task_Manager
 
 # Build rule for target.
@@ -166,6 +289,71 @@ Task_Manager: cmake_check_build_system
 Task_Manager/fast:
 	$(MAKE) $(MAKESILENT) -f src\task_manager\CMakeFiles\Task_Manager.dir\build.make src/task_manager/CMakeFiles/Task_Manager.dir/build
 .PHONY : Task_Manager/fast
+
+#=============================================================================
+# Target rules for targets named Task_Manager_autogen_timestamp_deps
+
+# Build rule for target.
+Task_Manager_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Task_Manager_autogen_timestamp_deps
+.PHONY : Task_Manager_autogen_timestamp_deps
+
+# fast build rule for target.
+Task_Manager_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f src\task_manager\CMakeFiles\Task_Manager_autogen_timestamp_deps.dir\build.make src/task_manager/CMakeFiles/Task_Manager_autogen_timestamp_deps.dir/build
+.PHONY : Task_Manager_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named Task_Manager_autogen
+
+# Build rule for target.
+Task_Manager_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Task_Manager_autogen
+.PHONY : Task_Manager_autogen
+
+# fast build rule for target.
+Task_Manager_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f src\task_manager\CMakeFiles\Task_Manager_autogen.dir\build.make src/task_manager/CMakeFiles/Task_Manager_autogen.dir/build
+.PHONY : Task_Manager_autogen/fast
+
+#=============================================================================
+# Target rules for targets named QtInterface
+
+# Build rule for target.
+QtInterface: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 QtInterface
+.PHONY : QtInterface
+
+# fast build rule for target.
+QtInterface/fast:
+	$(MAKE) $(MAKESILENT) -f src\qt_interface\CMakeFiles\QtInterface.dir\build.make src/qt_interface/CMakeFiles/QtInterface.dir/build
+.PHONY : QtInterface/fast
+
+#=============================================================================
+# Target rules for targets named QtInterface_autogen_timestamp_deps
+
+# Build rule for target.
+QtInterface_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 QtInterface_autogen_timestamp_deps
+.PHONY : QtInterface_autogen_timestamp_deps
+
+# fast build rule for target.
+QtInterface_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f src\qt_interface\CMakeFiles\QtInterface_autogen_timestamp_deps.dir\build.make src/qt_interface/CMakeFiles/QtInterface_autogen_timestamp_deps.dir/build
+.PHONY : QtInterface_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named QtInterface_autogen
+
+# Build rule for target.
+QtInterface_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 QtInterface_autogen
+.PHONY : QtInterface_autogen
+
+# fast build rule for target.
+QtInterface_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f src\qt_interface\CMakeFiles\QtInterface_autogen.dir\build.make src/qt_interface/CMakeFiles/QtInterface_autogen.dir/build
+.PHONY : QtInterface_autogen/fast
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -191,53 +379,53 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-src/interface/qt_interface/main_window.obj: src/interface/qt_interface/main_window.cpp.obj
-.PHONY : src/interface/qt_interface/main_window.obj
+main_autogen/mocs_compilation.obj: main_autogen/mocs_compilation.cpp.obj
+.PHONY : main_autogen/mocs_compilation.obj
 
 # target to build an object file
-src/interface/qt_interface/main_window.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj
-.PHONY : src/interface/qt_interface/main_window.cpp.obj
+main_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.obj
+.PHONY : main_autogen/mocs_compilation.cpp.obj
 
-src/interface/qt_interface/main_window.i: src/interface/qt_interface/main_window.cpp.i
-.PHONY : src/interface/qt_interface/main_window.i
+main_autogen/mocs_compilation.i: main_autogen/mocs_compilation.cpp.i
+.PHONY : main_autogen/mocs_compilation.i
 
 # target to preprocess a source file
-src/interface/qt_interface/main_window.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.i
-.PHONY : src/interface/qt_interface/main_window.cpp.i
+main_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.i
+.PHONY : main_autogen/mocs_compilation.cpp.i
 
-src/interface/qt_interface/main_window.s: src/interface/qt_interface/main_window.cpp.s
-.PHONY : src/interface/qt_interface/main_window.s
+main_autogen/mocs_compilation.s: main_autogen/mocs_compilation.cpp.s
+.PHONY : main_autogen/mocs_compilation.s
 
 # target to generate assembly for a file
-src/interface/qt_interface/main_window.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.s
-.PHONY : src/interface/qt_interface/main_window.cpp.s
+main_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.s
+.PHONY : main_autogen/mocs_compilation.cpp.s
 
-src/interface/user_interface.obj: src/interface/user_interface.cpp.obj
-.PHONY : src/interface/user_interface.obj
+src/qt_interface/mainwindow.obj: src/qt_interface/mainwindow.cpp.obj
+.PHONY : src/qt_interface/mainwindow.obj
 
 # target to build an object file
-src/interface/user_interface.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/interface/user_interface.cpp.obj
-.PHONY : src/interface/user_interface.cpp.obj
+src/qt_interface/mainwindow.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.obj
+.PHONY : src/qt_interface/mainwindow.cpp.obj
 
-src/interface/user_interface.i: src/interface/user_interface.cpp.i
-.PHONY : src/interface/user_interface.i
+src/qt_interface/mainwindow.i: src/qt_interface/mainwindow.cpp.i
+.PHONY : src/qt_interface/mainwindow.i
 
 # target to preprocess a source file
-src/interface/user_interface.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/interface/user_interface.cpp.i
-.PHONY : src/interface/user_interface.cpp.i
+src/qt_interface/mainwindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.i
+.PHONY : src/qt_interface/mainwindow.cpp.i
 
-src/interface/user_interface.s: src/interface/user_interface.cpp.s
-.PHONY : src/interface/user_interface.s
+src/qt_interface/mainwindow.s: src/qt_interface/mainwindow.cpp.s
+.PHONY : src/qt_interface/mainwindow.s
 
 # target to generate assembly for a file
-src/interface/user_interface.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/interface/user_interface.cpp.s
-.PHONY : src/interface/user_interface.cpp.s
+src/qt_interface/mainwindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.s
+.PHONY : src/qt_interface/mainwindow.cpp.s
 
 src/task/Task.obj: src/task/Task.cpp.obj
 .PHONY : src/task/Task.obj
@@ -390,7 +578,22 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... edit_cache
+	@echo ... install
+	@echo ... install/local
+	@echo ... install/strip
+	@echo ... list_install_components
 	@echo ... rebuild_cache
+	@echo ... QtInterface_autogen
+	@echo ... QtInterface_autogen_timestamp_deps
+	@echo ... Task_Manager_autogen
+	@echo ... Task_Manager_autogen_timestamp_deps
+	@echo ... Task_autogen
+	@echo ... Task_autogen_timestamp_deps
+	@echo ... Utils_autogen
+	@echo ... Utils_autogen_timestamp_deps
+	@echo ... main_autogen
+	@echo ... main_autogen_timestamp_deps
+	@echo ... QtInterface
 	@echo ... Task
 	@echo ... Task_Manager
 	@echo ... Utils
@@ -398,12 +601,12 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... src/interface/qt_interface/main_window.obj
-	@echo ... src/interface/qt_interface/main_window.i
-	@echo ... src/interface/qt_interface/main_window.s
-	@echo ... src/interface/user_interface.obj
-	@echo ... src/interface/user_interface.i
-	@echo ... src/interface/user_interface.s
+	@echo ... main_autogen/mocs_compilation.obj
+	@echo ... main_autogen/mocs_compilation.i
+	@echo ... main_autogen/mocs_compilation.s
+	@echo ... src/qt_interface/mainwindow.obj
+	@echo ... src/qt_interface/mainwindow.i
+	@echo ... src/qt_interface/mainwindow.s
 	@echo ... src/task/Task.obj
 	@echo ... src/task/Task.i
 	@echo ... src/task/Task.s

@@ -1,0 +1,27 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"src/task_manager/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"id" : "Task_Manager_autogen_timestamp_deps::@c1fe7af6d477919fecb8",
+	"isGeneratorProvided" : true,
+	"name" : "Task_Manager_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : "src/task_manager",
+		"source" : "src/task_manager"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

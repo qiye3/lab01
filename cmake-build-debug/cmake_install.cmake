@@ -42,6 +42,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("D:/vscode_c/data_structure/lab01/cmake-build-debug/src/utils/cmake_install.cmake")
   include("D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task/cmake_install.cmake")
   include("D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task_manager/cmake_install.cmake")
+  include("D:/vscode_c/data_structure/lab01/cmake-build-debug/src/qt_interface/cmake_install.cmake")
 
 endif()
 

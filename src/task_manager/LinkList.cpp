@@ -182,6 +182,16 @@ void LinkList::clear(){
     length = 0;
 }
 
+// 从链表中获取第 i 个任务
+Task LinkList::get_task(int i){
+    Node *p = get_by_i(i);
+    if(p == nullptr){
+        cout<<"没有找到该任务"<<endl;
+        return Task();
+    }
+    return p->task;
+}
+
 // 排序
 void LinkList::sort(int op){
     if(length <= 1) return;

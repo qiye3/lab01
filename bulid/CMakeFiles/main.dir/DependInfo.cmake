@@ -8,9 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "" "main_autogen/timestamp" "custom" "main_autogen/deps"
   "D:/vscode_c/data_structure/lab01/main.cpp" "CMakeFiles/main.dir/main.cpp.obj" "gcc" "CMakeFiles/main.dir/main.cpp.obj.d"
-  "D:/vscode_c/data_structure/lab01/src/interface/qt_interface/main_window.cpp" "CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj" "gcc" "CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj.d"
-  "D:/vscode_c/data_structure/lab01/src/interface/user_interface.cpp" "CMakeFiles/main.dir/src/interface/user_interface.cpp.obj" "gcc" "CMakeFiles/main.dir/src/interface/user_interface.cpp.obj.d"
+  "D:/vscode_c/data_structure/lab01/bulid/main_autogen/mocs_compilation.cpp" "CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.obj" "gcc" "CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.obj.d"
+  "D:/vscode_c/data_structure/lab01/src/qt_interface/mainwindow.cpp" "CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.obj" "gcc" "CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.obj.d"
   "D:/vscode_c/data_structure/lab01/src/task/Task.cpp" "CMakeFiles/main.dir/src/task/Task.cpp.obj" "gcc" "CMakeFiles/main.dir/src/task/Task.cpp.obj.d"
   "D:/vscode_c/data_structure/lab01/src/task/reminder.cpp" "CMakeFiles/main.dir/src/task/reminder.cpp.obj" "gcc" "CMakeFiles/main.dir/src/task/reminder.cpp.obj.d"
   "D:/vscode_c/data_structure/lab01/src/task_manager/DLinkList.cpp" "CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj" "gcc" "CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj.d"

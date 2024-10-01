@@ -44,6 +44,8 @@ class Task{
 
         // --------修改变量---------//
 
+        void change_task(string new_name, string new_description, int new_priority, string new_deadline);
+
         void change_name(string new_name){name = new_name;};
 
         void change_description(string new_description){description = new_description;};

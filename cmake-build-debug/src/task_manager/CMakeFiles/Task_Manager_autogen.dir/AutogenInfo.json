@@ -1,0 +1,88 @@
+{
+	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
+	"BUILD_DIR" : "D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task_manager/Task_Manager_autogen",
+	"CMAKE_BINARY_DIR" : "D:/vscode_c/data_structure/lab01/cmake-build-debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task_manager",
+	"CMAKE_CURRENT_SOURCE_DIR" : "D:/vscode_c/data_structure/lab01/src/task_manager",
+	"CMAKE_EXECUTABLE" : "E:/CLion 2024.2.2/bin/cmake/win/x64/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : [ "D:/vscode_c/data_structure/lab01/src/task_manager/CMakeLists.txt" ],
+	"CMAKE_SOURCE_DIR" : "D:/vscode_c/data_structure/lab01",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task_manager/Task_Manager_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "Task_Manager_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"D:/vscode_c/data_structure/lab01/src/task_manager/LinkList.hpp",
+			"MU",
+			"EWIEGA46WW/moc_LinkList.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task_manager/Task_Manager_autogen/include",
+	"MOC_COMPILATION_FILE" : "D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task_manager/Task_Manager_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"D:/vscode_c/data_structure/lab01/src/task_manager",
+		"E:/msys2/mingw64/include/c++/14.1.0",
+		"E:/msys2/mingw64/include/c++/14.1.0/x86_64-w64-mingw32",
+		"E:/msys2/mingw64/include/c++/14.1.0/backward",
+		"E:/msys2/mingw64/lib/gcc/x86_64-w64-mingw32/14.1.0/include",
+		"E:/msys2/mingw64/include",
+		"E:/msys2/mingw64/lib/gcc/x86_64-w64-mingw32/14.1.0/include-fixed"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT",
+		"Q_ENUM_NS"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"E:/msys2/mingw64/bin/c++.exe",
+		"-std=gnu++11",
+		"-dM",
+		"-E",
+		"-c",
+		"E:/CLion 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task_manager/Task_Manager_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 14,
+	"PARSE_CACHE_FILE" : "D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task_manager/CMakeFiles/Task_Manager_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "E:/Qt/6.7.2/mingw_64/./bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "E:/Qt/6.7.2/mingw_64/./bin/uic.exe",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 7,
+	"SETTINGS_FILE" : "D:/vscode_c/data_structure/lab01/cmake-build-debug/src/task_manager/CMakeFiles/Task_Manager_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"D:/vscode_c/data_structure/lab01/src/task_manager/LinkList.cpp",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"USE_BETTER_GRAPH" : false,
+	"VERBOSITY" : 0
+}

@@ -679,3 +679,136 @@ events:
       Running the CXX compiler's linker: "../src/gcc-12.2.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/buildroot/x86_64-1220-win32-seh-rt_v10-rev0/mingw64 --enable-host-shared --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=win32 --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-win32-seh-rev0, Built by MinGW-W64 project' --with-bugurl=https:/sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1220-win32-seh-rt_v10-rev0/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1220-win32-seh-rt_v10-rev0/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/buildroot/x86_64-1220-win32-seh-rt_v10-rev0/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/buildroot/x86_64-1220-win32-seh-rt_v10-rev0/mingw64/opt/lib -L/c/buildroot/prerequisites/x86_64-zlib-static/lib -L/c/buildroot/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/c/buildroot/x86_64-1220-win32-seh-rt_v10-rev0/mingw64/bin/ld.exe" "--version"
       
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/CMake/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/CMake/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/CMake/share/cmake-3.30/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "E:/CMake/share/cmake-3.30/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "E:/CMake/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake:27 (_qt_internal_find_third_party_dependencies)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/Qt6Config.cmake:124 (include)"
+      - "CMakeLists.txt:7 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-xskurr"
+      binary: "D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-xskurr"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6;E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-xskurr'
+        
+        Run Build Command(s): E:/CMake/bin/cmake.exe -E env VERBOSE=1 E:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_03418/fast
+        E:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_03418.dir\\build.make CMakeFiles/cmTC_03418.dir/build
+        mingw32-make.exe[1]: Entering directory 'D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-xskurr'
+        Building C object CMakeFiles/cmTC_03418.dir/src.c.obj
+        E:\\mingw64\\bin\\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles\\cmTC_03418.dir\\src.c.obj -c D:\\vscode_c\\data_structure\\lab01\\bulid\\CMakeFiles\\CMakeScratch\\TryCompile-xskurr\\src.c
+        Linking C executable cmTC_03418.exe
+        E:\\CMake\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_03418.dir\\link.txt --verbose=1
+        E:\\CMake\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_03418.dir/objects.a
+        E:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_03418.dir/objects.a @CMakeFiles\\cmTC_03418.dir\\objects1.rsp
+        E:\\mingw64\\bin\\gcc.exe -Wl,--whole-archive CMakeFiles\\cmTC_03418.dir/objects.a -Wl,--no-whole-archive -o cmTC_03418.exe -Wl,--out-implib,libcmTC_03418.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_03418.dir\\linkLibs.rsp
+        E:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: CMakeFiles\\cmTC_03418.dir/objects.a(src.c.obj):src.c:(.text+0x35): undefined reference to `pthread_create'
+        E:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: CMakeFiles\\cmTC_03418.dir/objects.a(src.c.obj):src.c:(.text+0x41): undefined reference to `pthread_detach'
+        E:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: CMakeFiles\\cmTC_03418.dir/objects.a(src.c.obj):src.c:(.text+0x4d): undefined reference to `pthread_cancel'
+        E:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: CMakeFiles\\cmTC_03418.dir/objects.a(src.c.obj):src.c:(.text+0x5e): undefined reference to `pthread_join'
+        E:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: CMakeFiles\\cmTC_03418.dir/objects.a(src.c.obj):src.c:(.text+0x68): undefined reference to `pthread_exit'
+        collect2.exe: error: ld returned 1 exit status
+        mingw32-make.exe[1]: *** [CMakeFiles\\cmTC_03418.dir\\build.make:100: cmTC_03418.exe] Error 1
+        mingw32-make.exe[1]: Leaving directory 'D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-xskurr'
+        mingw32-make.exe: *** [Makefile:126: cmTC_03418/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/CMake/share/cmake-3.30/Modules/FindThreads.cmake:136 (try_compile)"
+      - "E:/CMake/share/cmake-3.30/Modules/FindThreads.cmake:169 (_threads_check_flag_pthread)"
+      - "E:/CMake/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake:27 (_qt_internal_find_third_party_dependencies)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/Qt6Config.cmake:124 (include)"
+      - "CMakeLists.txt:7 (find_package)"
+    checks:
+      - "Check if compiler accepts -pthread"
+    directories:
+      source: "D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-2ztvpv"
+      binary: "D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-2ztvpv"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6;E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "THREADS_HAVE_PTHREAD_ARG"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-2ztvpv'
+        
+        Run Build Command(s): E:/CMake/bin/cmake.exe -E env VERBOSE=1 E:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_a9be3/fast
+        E:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_a9be3.dir\\build.make CMakeFiles/cmTC_a9be3.dir/build
+        mingw32-make.exe[1]: Entering directory 'D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-2ztvpv'
+        Building C object CMakeFiles/cmTC_a9be3.dir/CheckForPthreads.c.obj
+        E:\\mingw64\\bin\\gcc.exe    -o CMakeFiles\\cmTC_a9be3.dir\\CheckForPthreads.c.obj -c D:\\vscode_c\\data_structure\\lab01\\bulid\\CMakeFiles\\CMakeScratch\\TryCompile-2ztvpv\\CheckForPthreads.c
+        Linking C executable cmTC_a9be3.exe
+        E:\\CMake\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_a9be3.dir\\link.txt --verbose=1
+        E:\\CMake\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_a9be3.dir/objects.a
+        E:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_a9be3.dir/objects.a @CMakeFiles\\cmTC_a9be3.dir\\objects1.rsp
+        E:\\mingw64\\bin\\gcc.exe -Wl,--whole-archive CMakeFiles\\cmTC_a9be3.dir/objects.a -Wl,--no-whole-archive -o cmTC_a9be3.exe -Wl,--out-implib,libcmTC_a9be3.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_a9be3.dir\\linkLibs.rsp
+        mingw32-make.exe[1]: Leaving directory 'D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-2ztvpv'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/CMake/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/CMake/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/FindWrapAtomic.cmake:36 (check_cxx_source_compiles)"
+      - "E:/CMake/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:33 (_qt_internal_find_third_party_dependencies)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:45 (include)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/Qt6Config.cmake:169 (find_package)"
+      - "CMakeLists.txt:7 (find_package)"
+    checks:
+      - "Performing Test HAVE_STDATOMIC"
+    directories:
+      source: "D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-f5jshk"
+      binary: "D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-f5jshk"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6;E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "HAVE_STDATOMIC"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-f5jshk'
+        
+        Run Build Command(s): E:/CMake/bin/cmake.exe -E env VERBOSE=1 E:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_3ca71/fast
+        E:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_3ca71.dir\\build.make CMakeFiles/cmTC_3ca71.dir/build
+        mingw32-make.exe[1]: Entering directory 'D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-f5jshk'
+        Building CXX object CMakeFiles/cmTC_3ca71.dir/src.cxx.obj
+        E:\\mingw64\\bin\\g++.exe -DHAVE_STDATOMIC  -std=gnu++11 -o CMakeFiles\\cmTC_3ca71.dir\\src.cxx.obj -c D:\\vscode_c\\data_structure\\lab01\\bulid\\CMakeFiles\\CMakeScratch\\TryCompile-f5jshk\\src.cxx
+        Linking CXX executable cmTC_3ca71.exe
+        E:\\CMake\\bin\\cmake.exe -E cmake_link_script CMakeFiles\\cmTC_3ca71.dir\\link.txt --verbose=1
+        E:\\CMake\\bin\\cmake.exe -E rm -f CMakeFiles\\cmTC_3ca71.dir/objects.a
+        E:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_3ca71.dir/objects.a @CMakeFiles\\cmTC_3ca71.dir\\objects1.rsp
+        E:\\mingw64\\bin\\g++.exe -Wl,--whole-archive CMakeFiles\\cmTC_3ca71.dir/objects.a -Wl,--no-whole-archive -o cmTC_3ca71.exe -Wl,--out-implib,libcmTC_3ca71.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_3ca71.dir\\linkLibs.rsp
+        mingw32-make.exe[1]: Leaving directory 'D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/CMakeScratch/TryCompile-f5jshk'
+        
+      exitCode: 0
+...

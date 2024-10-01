@@ -1,74 +1,104 @@
 [
 {
   "directory": "D:/vscode_c/data_structure/lab01/bulid",
-  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\main.dir\\main.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\main.cpp",
+  "command": "E:\\mingw64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++17 -pthread -o CMakeFiles\\main.dir\\main_autogen\\mocs_compilation.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\bulid\\main_autogen\\mocs_compilation.cpp",
+  "file": "D:/vscode_c/data_structure/lab01/bulid/main_autogen/mocs_compilation.cpp",
+  "output": "CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.obj"
+},
+{
+  "directory": "D:/vscode_c/data_structure/lab01/bulid",
+  "command": "E:\\mingw64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++17 -pthread -o CMakeFiles\\main.dir\\main.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\main.cpp",
   "file": "D:/vscode_c/data_structure/lab01/main.cpp",
   "output": "CMakeFiles/main.dir/main.cpp.obj"
 },
 {
   "directory": "D:/vscode_c/data_structure/lab01/bulid",
-  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\main.dir\\src\\interface\\qt_interface\\main_window.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\interface\\qt_interface\\main_window.cpp",
-  "file": "D:/vscode_c/data_structure/lab01/src/interface/qt_interface/main_window.cpp",
-  "output": "CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj"
+  "command": "E:\\mingw64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++17 -pthread -o CMakeFiles\\main.dir\\src\\qt_interface\\mainwindow.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\qt_interface\\mainwindow.cpp",
+  "file": "D:/vscode_c/data_structure/lab01/src/qt_interface/mainwindow.cpp",
+  "output": "CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.obj"
 },
 {
   "directory": "D:/vscode_c/data_structure/lab01/bulid",
-  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\main.dir\\src\\interface\\user_interface.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\interface\\user_interface.cpp",
-  "file": "D:/vscode_c/data_structure/lab01/src/interface/user_interface.cpp",
-  "output": "CMakeFiles/main.dir/src/interface/user_interface.cpp.obj"
-},
-{
-  "directory": "D:/vscode_c/data_structure/lab01/bulid",
-  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\main.dir\\src\\task\\Task.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task\\Task.cpp",
+  "command": "E:\\mingw64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++17 -pthread -o CMakeFiles\\main.dir\\src\\task\\Task.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task\\Task.cpp",
   "file": "D:/vscode_c/data_structure/lab01/src/task/Task.cpp",
   "output": "CMakeFiles/main.dir/src/task/Task.cpp.obj"
 },
 {
   "directory": "D:/vscode_c/data_structure/lab01/bulid",
-  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\main.dir\\src\\task\\reminder.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task\\reminder.cpp",
+  "command": "E:\\mingw64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++17 -pthread -o CMakeFiles\\main.dir\\src\\task\\reminder.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task\\reminder.cpp",
   "file": "D:/vscode_c/data_structure/lab01/src/task/reminder.cpp",
   "output": "CMakeFiles/main.dir/src/task/reminder.cpp.obj"
 },
 {
   "directory": "D:/vscode_c/data_structure/lab01/bulid",
-  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\main.dir\\src\\task_manager\\DLinkList.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task_manager\\DLinkList.cpp",
+  "command": "E:\\mingw64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++17 -pthread -o CMakeFiles\\main.dir\\src\\task_manager\\DLinkList.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task_manager\\DLinkList.cpp",
   "file": "D:/vscode_c/data_structure/lab01/src/task_manager/DLinkList.cpp",
   "output": "CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj"
 },
 {
   "directory": "D:/vscode_c/data_structure/lab01/bulid",
-  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\main.dir\\src\\task_manager\\LinkList.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task_manager\\LinkList.cpp",
+  "command": "E:\\mingw64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++17 -pthread -o CMakeFiles\\main.dir\\src\\task_manager\\LinkList.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task_manager\\LinkList.cpp",
   "file": "D:/vscode_c/data_structure/lab01/src/task_manager/LinkList.cpp",
   "output": "CMakeFiles/main.dir/src/task_manager/LinkList.cpp.obj"
 },
 {
   "directory": "D:/vscode_c/data_structure/lab01/bulid",
-  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\main.dir\\src\\task_manager\\SeqList.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task_manager\\SeqList.cpp",
+  "command": "E:\\mingw64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++17 -pthread -o CMakeFiles\\main.dir\\src\\task_manager\\SeqList.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task_manager\\SeqList.cpp",
   "file": "D:/vscode_c/data_structure/lab01/src/task_manager/SeqList.cpp",
   "output": "CMakeFiles/main.dir/src/task_manager/SeqList.cpp.obj"
 },
 {
   "directory": "D:/vscode_c/data_structure/lab01/bulid",
-  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\main.dir\\src\\utils\\Utils.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\utils\\Utils.cpp",
+  "command": "E:\\mingw64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/main.dir/includes_CXX.rsp -g -std=gnu++17 -pthread -o CMakeFiles\\main.dir\\src\\utils\\Utils.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\utils\\Utils.cpp",
   "file": "D:/vscode_c/data_structure/lab01/src/utils/Utils.cpp",
   "output": "CMakeFiles/main.dir/src/utils/Utils.cpp.obj"
 },
 {
   "directory": "D:/vscode_c/data_structure/lab01/bulid/src/utils",
-  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/Utils.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Utils.dir\\Utils.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\utils\\Utils.cpp",
+  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/Utils.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Utils.dir\\Utils_autogen\\mocs_compilation.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\bulid\\src\\utils\\Utils_autogen\\mocs_compilation.cpp",
+  "file": "D:/vscode_c/data_structure/lab01/bulid/src/utils/Utils_autogen/mocs_compilation.cpp",
+  "output": "src/utils/CMakeFiles/Utils.dir/Utils_autogen/mocs_compilation.cpp.obj"
+},
+{
+  "directory": "D:/vscode_c/data_structure/lab01/bulid/src/utils",
+  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/Utils.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Utils.dir\\Utils.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\utils\\Utils.cpp",
   "file": "D:/vscode_c/data_structure/lab01/src/utils/Utils.cpp",
   "output": "src/utils/CMakeFiles/Utils.dir/Utils.cpp.obj"
 },
 {
   "directory": "D:/vscode_c/data_structure/lab01/bulid/src/task",
-  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/Task.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Task.dir\\Task.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task\\Task.cpp",
+  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/Task.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Task.dir\\Task_autogen\\mocs_compilation.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\bulid\\src\\task\\Task_autogen\\mocs_compilation.cpp",
+  "file": "D:/vscode_c/data_structure/lab01/bulid/src/task/Task_autogen/mocs_compilation.cpp",
+  "output": "src/task/CMakeFiles/Task.dir/Task_autogen/mocs_compilation.cpp.obj"
+},
+{
+  "directory": "D:/vscode_c/data_structure/lab01/bulid/src/task",
+  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/Task.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Task.dir\\Task.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task\\Task.cpp",
   "file": "D:/vscode_c/data_structure/lab01/src/task/Task.cpp",
   "output": "src/task/CMakeFiles/Task.dir/Task.cpp.obj"
 },
 {
   "directory": "D:/vscode_c/data_structure/lab01/bulid/src/task_manager",
-  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/Task_Manager.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Task_Manager.dir\\LinkList.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task_manager\\LinkList.cpp",
+  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/Task_Manager.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Task_Manager.dir\\Task_Manager_autogen\\mocs_compilation.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\bulid\\src\\task_manager\\Task_Manager_autogen\\mocs_compilation.cpp",
+  "file": "D:/vscode_c/data_structure/lab01/bulid/src/task_manager/Task_Manager_autogen/mocs_compilation.cpp",
+  "output": "src/task_manager/CMakeFiles/Task_Manager.dir/Task_Manager_autogen/mocs_compilation.cpp.obj"
+},
+{
+  "directory": "D:/vscode_c/data_structure/lab01/bulid/src/task_manager",
+  "command": "E:\\mingw64\\bin\\g++.exe  @CMakeFiles/Task_Manager.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Task_Manager.dir\\LinkList.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\task_manager\\LinkList.cpp",
   "file": "D:/vscode_c/data_structure/lab01/src/task_manager/LinkList.cpp",
   "output": "src/task_manager/CMakeFiles/Task_Manager.dir/LinkList.cpp.obj"
+},
+{
+  "directory": "D:/vscode_c/data_structure/lab01/bulid/src/qt_interface",
+  "command": "E:\\mingw64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/QtInterface.dir/includes_CXX.rsp -g -std=gnu++17 -pthread -o CMakeFiles\\QtInterface.dir\\QtInterface_autogen\\mocs_compilation.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\bulid\\src\\qt_interface\\QtInterface_autogen\\mocs_compilation.cpp",
+  "file": "D:/vscode_c/data_structure/lab01/bulid/src/qt_interface/QtInterface_autogen/mocs_compilation.cpp",
+  "output": "src/qt_interface/CMakeFiles/QtInterface.dir/QtInterface_autogen/mocs_compilation.cpp.obj"
+},
+{
+  "directory": "D:/vscode_c/data_structure/lab01/bulid/src/qt_interface",
+  "command": "E:\\mingw64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/QtInterface.dir/includes_CXX.rsp -g -std=gnu++17 -pthread -o CMakeFiles\\QtInterface.dir\\mainwindow.cpp.obj -c D:\\vscode_c\\data_structure\\lab01\\src\\qt_interface\\mainwindow.cpp",
+  "file": "D:/vscode_c/data_structure/lab01/src/qt_interface/mainwindow.cpp",
+  "output": "src/qt_interface/CMakeFiles/QtInterface.dir/mainwindow.cpp.obj"
 }
 ]

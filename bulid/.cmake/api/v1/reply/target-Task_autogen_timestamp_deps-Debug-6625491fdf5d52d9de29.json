@@ -1,0 +1,27 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"src/task/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"id" : "Task_autogen_timestamp_deps::@5ce37fece1e4ea928e3d",
+	"isGeneratorProvided" : true,
+	"name" : "Task_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : "src/task",
+		"source" : "src/task"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

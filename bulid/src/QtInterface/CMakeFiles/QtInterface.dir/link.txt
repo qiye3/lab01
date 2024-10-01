@@ -1,0 +1,2 @@
+E:\mingw64\bin\ar.exe qc libQtInterface.a CMakeFiles/QtInterface.dir/main_window.cpp.obj
+E:\mingw64\bin\ranlib.exe libQtInterface.a

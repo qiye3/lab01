@@ -8,7 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "" "src/task_manager/Task_Manager_autogen/timestamp" "custom" "src/task_manager/Task_Manager_autogen/deps"
   "D:/vscode_c/data_structure/lab01/src/task_manager/LinkList.cpp" "src/task_manager/CMakeFiles/Task_Manager.dir/LinkList.cpp.obj" "gcc" "src/task_manager/CMakeFiles/Task_Manager.dir/LinkList.cpp.obj.d"
+  "D:/vscode_c/data_structure/lab01/bulid/src/task_manager/Task_Manager_autogen/mocs_compilation.cpp" "src/task_manager/CMakeFiles/Task_Manager.dir/Task_Manager_autogen/mocs_compilation.cpp.obj" "gcc" "src/task_manager/CMakeFiles/Task_Manager.dir/Task_Manager_autogen/mocs_compilation.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

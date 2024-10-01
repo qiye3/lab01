@@ -1,0 +1,254 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-6fd9325888786d898e38.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						12,
+						13,
+						14
+					]
+				},
+				{
+					"build" : "src/utils",
+					"jsonFile" : "directory-src.utils-Debug-63aae164cb9969211904.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/utils",
+					"targetIndexes" : 
+					[
+						9,
+						10,
+						11
+					]
+				},
+				{
+					"build" : "src/task",
+					"jsonFile" : "directory-src.task-Debug-115ca6000bdfbf01d00d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/task",
+					"targetIndexes" : 
+					[
+						3,
+						7,
+						8
+					]
+				},
+				{
+					"build" : "src/task_manager",
+					"jsonFile" : "directory-src.task_manager-Debug-48014e1cd415ce350b72.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/task_manager",
+					"targetIndexes" : 
+					[
+						4,
+						5,
+						6
+					]
+				},
+				{
+					"build" : "src/qt_interface",
+					"jsonFile" : "directory-src.qt_interface-Debug-33cffb2f1b1b48d185ef.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/qt_interface",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					],
+					"name" : "lab01",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 4,
+					"id" : "QtInterface::@fc566082e052e3788ba1",
+					"jsonFile" : "target-QtInterface-Debug-f89e1e347e67ebc117a9.json",
+					"name" : "QtInterface",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "QtInterface_autogen::@fc566082e052e3788ba1",
+					"jsonFile" : "target-QtInterface_autogen-Debug-d8ef6fe41690bb75f859.json",
+					"name" : "QtInterface_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "QtInterface_autogen_timestamp_deps::@fc566082e052e3788ba1",
+					"jsonFile" : "target-QtInterface_autogen_timestamp_deps-Debug-8341917f304c36537f0b.json",
+					"name" : "QtInterface_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "Task::@5ce37fece1e4ea928e3d",
+					"jsonFile" : "target-Task-Debug-aeff1b08094fc97e0e2b.json",
+					"name" : "Task",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "Task_Manager::@c1fe7af6d477919fecb8",
+					"jsonFile" : "target-Task_Manager-Debug-a5a9aba93d8c61f77c31.json",
+					"name" : "Task_Manager",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "Task_Manager_autogen::@c1fe7af6d477919fecb8",
+					"jsonFile" : "target-Task_Manager_autogen-Debug-52af71aaa046f963cc71.json",
+					"name" : "Task_Manager_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "Task_Manager_autogen_timestamp_deps::@c1fe7af6d477919fecb8",
+					"jsonFile" : "target-Task_Manager_autogen_timestamp_deps-Debug-8e08a06025a096362ed5.json",
+					"name" : "Task_Manager_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "Task_autogen::@5ce37fece1e4ea928e3d",
+					"jsonFile" : "target-Task_autogen-Debug-c70bd08ecc1404e7eac5.json",
+					"name" : "Task_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "Task_autogen_timestamp_deps::@5ce37fece1e4ea928e3d",
+					"jsonFile" : "target-Task_autogen_timestamp_deps-Debug-6625491fdf5d52d9de29.json",
+					"name" : "Task_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Utils::@f1b38b22aeb65474a6c5",
+					"jsonFile" : "target-Utils-Debug-1b00ad386230f3120a47.json",
+					"name" : "Utils",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Utils_autogen::@f1b38b22aeb65474a6c5",
+					"jsonFile" : "target-Utils_autogen-Debug-d82a8374368766b5e1f4.json",
+					"name" : "Utils_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Utils_autogen_timestamp_deps::@f1b38b22aeb65474a6c5",
+					"jsonFile" : "target-Utils_autogen_timestamp_deps-Debug-ab439a0ddc0dfe84ee45.json",
+					"name" : "Utils_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main-Debug-397323c3d58c3e3cff51.json",
+					"name" : "main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main_autogen-Debug-ae9172f8d8a79c10216e.json",
+					"name" : "main_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main_autogen_timestamp_deps-Debug-af702ebe729a4d35a502.json",
+					"name" : "main_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/vscode_c/data_structure/lab01/bulid",
+		"source" : "D:/vscode_c/data_structure/lab01"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

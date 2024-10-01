@@ -599,3 +599,73 @@ events:
       Running the CXX compiler's linker: "E:/msys2/mingw64/x86_64-w64-mingw32/bin/ld.exe" "-v"
       GNU ld (GNU Binutils) 2.42
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/CLion 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/CLion 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/CLion 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "E:/CLion 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "E:/CLion 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake:27 (_qt_internal_find_third_party_dependencies)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/Qt6Config.cmake:124 (include)"
+      - "CMakeLists.txt:7 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "D:/vscode_c/data_structure/lab01/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ny4g6e"
+      binary: "D:/vscode_c/data_structure/lab01/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ny4g6e"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6;E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/vscode_c/data_structure/lab01/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ny4g6e'
+        
+        Run Build Command(s): "E:/CLion 2024.2.2/bin/ninja/win/x64/ninja.exe" -v cmTC_7fc46
+        [1/2] E:\\msys2\\mingw64\\bin\\cc.exe -DCMAKE_HAVE_LIBC_PTHREAD  -fdiagnostics-color=always -o CMakeFiles/cmTC_7fc46.dir/src.c.obj -c D:/vscode_c/data_structure/lab01/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ny4g6e/src.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\msys2\\mingw64\\bin\\cc.exe   CMakeFiles/cmTC_7fc46.dir/src.c.obj -o cmTC_7fc46.exe -Wl,--out-implib,libcmTC_7fc46.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/CLion 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/CLion 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/FindWrapAtomic.cmake:36 (check_cxx_source_compiles)"
+      - "E:/CLion 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:33 (_qt_internal_find_third_party_dependencies)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:45 (include)"
+      - "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/Qt6Config.cmake:169 (find_package)"
+      - "CMakeLists.txt:7 (find_package)"
+    checks:
+      - "Performing Test HAVE_STDATOMIC"
+    directories:
+      source: "D:/vscode_c/data_structure/lab01/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2p5wrb"
+      binary: "D:/vscode_c/data_structure/lab01/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2p5wrb"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6;E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;E:/Qt/6.7.2/mingw_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "HAVE_STDATOMIC"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/vscode_c/data_structure/lab01/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2p5wrb'
+        
+        Run Build Command(s): "E:/CLion 2024.2.2/bin/ninja/win/x64/ninja.exe" -v cmTC_9bc34
+        [1/2] E:\\msys2\\mingw64\\bin\\c++.exe -DHAVE_STDATOMIC  -std=gnu++11 -fdiagnostics-color=always -o CMakeFiles/cmTC_9bc34.dir/src.cxx.obj -c D:/vscode_c/data_structure/lab01/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2p5wrb/src.cxx
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\msys2\\mingw64\\bin\\c++.exe   CMakeFiles/cmTC_9bc34.dir/src.cxx.obj -o cmTC_9bc34.exe -Wl,--out-implib,libcmTC_9bc34.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+...

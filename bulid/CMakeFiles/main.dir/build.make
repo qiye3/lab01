@@ -68,11 +68,33 @@ include CMakeFiles/main.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/main.dir/flags.make
 
+main_autogen/timestamp: E:/Qt/6.7.2/mingw_64/./bin/moc.exe
+main_autogen/timestamp: E:/Qt/6.7.2/mingw_64/./bin/uic.exe
+main_autogen/timestamp: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target main"
+	E:\CMake\bin\cmake.exe -E cmake_autogen D:/vscode_c/data_structure/lab01/bulid/CMakeFiles/main_autogen.dir/AutogenInfo.json Debug
+	E:\CMake\bin\cmake.exe -E touch D:/vscode_c/data_structure/lab01/bulid/main_autogen/timestamp
+
+CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.obj: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
+CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.obj: main_autogen/mocs_compilation.cpp
+CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.obj"
+	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.obj -MF CMakeFiles\main.dir\main_autogen\mocs_compilation.cpp.obj.d -o CMakeFiles\main.dir\main_autogen\mocs_compilation.cpp.obj -c D:\vscode_c\data_structure\lab01\bulid\main_autogen\mocs_compilation.cpp
+
+CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.i"
+	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode_c\data_structure\lab01\bulid\main_autogen\mocs_compilation.cpp > CMakeFiles\main.dir\main_autogen\mocs_compilation.cpp.i
+
+CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.s"
+	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode_c\data_structure\lab01\bulid\main_autogen\mocs_compilation.cpp -o CMakeFiles\main.dir\main_autogen\mocs_compilation.cpp.s
+
 CMakeFiles/main.dir/main.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/main.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
 CMakeFiles/main.dir/main.cpp.obj: D:/vscode_c/data_structure/lab01/main.cpp
 CMakeFiles/main.dir/main.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/main.cpp.obj"
 	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main.cpp.obj -MF CMakeFiles\main.dir\main.cpp.obj.d -o CMakeFiles\main.dir\main.cpp.obj -c D:\vscode_c\data_structure\lab01\main.cpp
 
 CMakeFiles/main.dir/main.cpp.i: cmake_force
@@ -83,41 +105,26 @@ CMakeFiles/main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
 	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode_c\data_structure\lab01\main.cpp -o CMakeFiles\main.dir\main.cpp.s
 
-CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
-CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj: D:/vscode_c/data_structure/lab01/src/interface/qt_interface/main_window.cpp
-CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj"
-	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj -MF CMakeFiles\main.dir\src\interface\qt_interface\main_window.cpp.obj.d -o CMakeFiles\main.dir\src\interface\qt_interface\main_window.cpp.obj -c D:\vscode_c\data_structure\lab01\src\interface\qt_interface\main_window.cpp
+CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.obj: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
+CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.obj: D:/vscode_c/data_structure/lab01/src/qt_interface/mainwindow.cpp
+CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.obj"
+	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.obj -MF CMakeFiles\main.dir\src\qt_interface\mainwindow.cpp.obj.d -o CMakeFiles\main.dir\src\qt_interface\mainwindow.cpp.obj -c D:\vscode_c\data_structure\lab01\src\qt_interface\mainwindow.cpp
 
-CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.i"
-	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode_c\data_structure\lab01\src\interface\qt_interface\main_window.cpp > CMakeFiles\main.dir\src\interface\qt_interface\main_window.cpp.i
+CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.i"
+	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode_c\data_structure\lab01\src\qt_interface\mainwindow.cpp > CMakeFiles\main.dir\src\qt_interface\mainwindow.cpp.i
 
-CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.s"
-	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode_c\data_structure\lab01\src\interface\qt_interface\main_window.cpp -o CMakeFiles\main.dir\src\interface\qt_interface\main_window.cpp.s
-
-CMakeFiles/main.dir/src/interface/user_interface.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/interface/user_interface.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
-CMakeFiles/main.dir/src/interface/user_interface.cpp.obj: D:/vscode_c/data_structure/lab01/src/interface/user_interface.cpp
-CMakeFiles/main.dir/src/interface/user_interface.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/interface/user_interface.cpp.obj"
-	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/interface/user_interface.cpp.obj -MF CMakeFiles\main.dir\src\interface\user_interface.cpp.obj.d -o CMakeFiles\main.dir\src\interface\user_interface.cpp.obj -c D:\vscode_c\data_structure\lab01\src\interface\user_interface.cpp
-
-CMakeFiles/main.dir/src/interface/user_interface.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/interface/user_interface.cpp.i"
-	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\vscode_c\data_structure\lab01\src\interface\user_interface.cpp > CMakeFiles\main.dir\src\interface\user_interface.cpp.i
-
-CMakeFiles/main.dir/src/interface/user_interface.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/interface/user_interface.cpp.s"
-	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode_c\data_structure\lab01\src\interface\user_interface.cpp -o CMakeFiles\main.dir\src\interface\user_interface.cpp.s
+CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.s"
+	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\vscode_c\data_structure\lab01\src\qt_interface\mainwindow.cpp -o CMakeFiles\main.dir\src\qt_interface\mainwindow.cpp.s
 
 CMakeFiles/main.dir/src/task/Task.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/task/Task.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
 CMakeFiles/main.dir/src/task/Task.cpp.obj: D:/vscode_c/data_structure/lab01/src/task/Task.cpp
 CMakeFiles/main.dir/src/task/Task.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/task/Task.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/src/task/Task.cpp.obj"
 	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/task/Task.cpp.obj -MF CMakeFiles\main.dir\src\task\Task.cpp.obj.d -o CMakeFiles\main.dir\src\task\Task.cpp.obj -c D:\vscode_c\data_structure\lab01\src\task\Task.cpp
 
 CMakeFiles/main.dir/src/task/Task.cpp.i: cmake_force
@@ -132,7 +139,7 @@ CMakeFiles/main.dir/src/task/reminder.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/task/reminder.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
 CMakeFiles/main.dir/src/task/reminder.cpp.obj: D:/vscode_c/data_structure/lab01/src/task/reminder.cpp
 CMakeFiles/main.dir/src/task/reminder.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/src/task/reminder.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/src/task/reminder.cpp.obj"
 	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/task/reminder.cpp.obj -MF CMakeFiles\main.dir\src\task\reminder.cpp.obj.d -o CMakeFiles\main.dir\src\task\reminder.cpp.obj -c D:\vscode_c\data_structure\lab01\src\task\reminder.cpp
 
 CMakeFiles/main.dir/src/task/reminder.cpp.i: cmake_force
@@ -147,7 +154,7 @@ CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj: CMakeFiles/main.dir/flag
 CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
 CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj: D:/vscode_c/data_structure/lab01/src/task_manager/DLinkList.cpp
 CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj"
 	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj -MF CMakeFiles\main.dir\src\task_manager\DLinkList.cpp.obj.d -o CMakeFiles\main.dir\src\task_manager\DLinkList.cpp.obj -c D:\vscode_c\data_structure\lab01\src\task_manager\DLinkList.cpp
 
 CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.i: cmake_force
@@ -162,7 +169,7 @@ CMakeFiles/main.dir/src/task_manager/LinkList.cpp.obj: CMakeFiles/main.dir/flags
 CMakeFiles/main.dir/src/task_manager/LinkList.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
 CMakeFiles/main.dir/src/task_manager/LinkList.cpp.obj: D:/vscode_c/data_structure/lab01/src/task_manager/LinkList.cpp
 CMakeFiles/main.dir/src/task_manager/LinkList.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/src/task_manager/LinkList.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/src/task_manager/LinkList.cpp.obj"
 	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/task_manager/LinkList.cpp.obj -MF CMakeFiles\main.dir\src\task_manager\LinkList.cpp.obj.d -o CMakeFiles\main.dir\src\task_manager\LinkList.cpp.obj -c D:\vscode_c\data_structure\lab01\src\task_manager\LinkList.cpp
 
 CMakeFiles/main.dir/src/task_manager/LinkList.cpp.i: cmake_force
@@ -177,7 +184,7 @@ CMakeFiles/main.dir/src/task_manager/SeqList.cpp.obj: CMakeFiles/main.dir/flags.
 CMakeFiles/main.dir/src/task_manager/SeqList.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
 CMakeFiles/main.dir/src/task_manager/SeqList.cpp.obj: D:/vscode_c/data_structure/lab01/src/task_manager/SeqList.cpp
 CMakeFiles/main.dir/src/task_manager/SeqList.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/src/task_manager/SeqList.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/main.dir/src/task_manager/SeqList.cpp.obj"
 	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/task_manager/SeqList.cpp.obj -MF CMakeFiles\main.dir\src\task_manager\SeqList.cpp.obj.d -o CMakeFiles\main.dir\src\task_manager\SeqList.cpp.obj -c D:\vscode_c\data_structure\lab01\src\task_manager\SeqList.cpp
 
 CMakeFiles/main.dir/src/task_manager/SeqList.cpp.i: cmake_force
@@ -192,7 +199,7 @@ CMakeFiles/main.dir/src/utils/Utils.cpp.obj: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/utils/Utils.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
 CMakeFiles/main.dir/src/utils/Utils.cpp.obj: D:/vscode_c/data_structure/lab01/src/utils/Utils.cpp
 CMakeFiles/main.dir/src/utils/Utils.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/main.dir/src/utils/Utils.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/main.dir/src/utils/Utils.cpp.obj"
 	E:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/utils/Utils.cpp.obj -MF CMakeFiles\main.dir\src\utils\Utils.cpp.obj.d -o CMakeFiles\main.dir\src\utils\Utils.cpp.obj -c D:\vscode_c\data_structure\lab01\src\utils\Utils.cpp
 
 CMakeFiles/main.dir/src/utils/Utils.cpp.i: cmake_force
@@ -205,9 +212,9 @@ CMakeFiles/main.dir/src/utils/Utils.cpp.s: cmake_force
 
 # Object files for target main
 main_OBJECTS = \
+"CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.obj" \
 "CMakeFiles/main.dir/main.cpp.obj" \
-"CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj" \
-"CMakeFiles/main.dir/src/interface/user_interface.cpp.obj" \
+"CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.obj" \
 "CMakeFiles/main.dir/src/task/Task.cpp.obj" \
 "CMakeFiles/main.dir/src/task/reminder.cpp.obj" \
 "CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj" \
@@ -218,9 +225,9 @@ main_OBJECTS = \
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
+main.exe: CMakeFiles/main.dir/main_autogen/mocs_compilation.cpp.obj
 main.exe: CMakeFiles/main.dir/main.cpp.obj
-main.exe: CMakeFiles/main.dir/src/interface/qt_interface/main_window.cpp.obj
-main.exe: CMakeFiles/main.dir/src/interface/user_interface.cpp.obj
+main.exe: CMakeFiles/main.dir/src/qt_interface/mainwindow.cpp.obj
 main.exe: CMakeFiles/main.dir/src/task/Task.cpp.obj
 main.exe: CMakeFiles/main.dir/src/task/reminder.cpp.obj
 main.exe: CMakeFiles/main.dir/src/task_manager/DLinkList.cpp.obj
@@ -231,10 +238,15 @@ main.exe: CMakeFiles/main.dir/build.make
 main.exe: src/utils/libUtils.a
 main.exe: src/task/libTask.a
 main.exe: src/task_manager/libTask_Manager.a
+main.exe: src/qt_interface/libQtInterface.a
+main.exe: E:/Qt/6.7.2/mingw_64/lib/libQt6Widgets.a
+main.exe: E:/Qt/6.7.2/mingw_64/lib/libQt6Gui.a
+main.exe: E:/Qt/6.7.2/mingw_64/lib/libQt6Core.a
+main.exe: E:/Qt/6.7.2/mingw_64/lib/libQt6EntryPoint.a
 main.exe: CMakeFiles/main.dir/linkLibs.rsp
 main.exe: CMakeFiles/main.dir/objects1.rsp
 main.exe: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable main.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\vscode_c\data_structure\lab01\bulid\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable main.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\main.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -245,7 +257,7 @@ CMakeFiles/main.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles\main.dir\cmake_clean.cmake
 .PHONY : CMakeFiles/main.dir/clean
 
-CMakeFiles/main.dir/depend:
+CMakeFiles/main.dir/depend: main_autogen/timestamp
 	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\vscode_c\data_structure\lab01 D:\vscode_c\data_structure\lab01 D:\vscode_c\data_structure\lab01\bulid D:\vscode_c\data_structure\lab01\bulid D:\vscode_c\data_structure\lab01\bulid\CMakeFiles\main.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/main.dir/depend
 

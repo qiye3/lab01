@@ -43,6 +43,8 @@ class LinkList{
 
         void clear();
 
+        Task get_task(int i);
+
         // ----------排序-----------//
 
         void sort(int op);
