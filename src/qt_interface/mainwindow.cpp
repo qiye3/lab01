@@ -207,6 +207,11 @@ void MainWindow::updateTaskDisplay(QTableWidget *taskTable, QListWidget *ListWid
     taskTableWidget->clearContents();
     taskTableWidget->setRowCount(0);
 
+    if(currentList->Length() == 0){
+        setupTaskTable(taskTable);
+        return;
+    }
+
     for(int i = 1; i <= currentList->Length(); i++){
         addTaskToTable(currentList->get_task(i), taskTable);
     }

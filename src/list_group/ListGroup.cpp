@@ -39,17 +39,21 @@ bool ListGroup::append_list(int ListType, string Name){
     {
     case LINKLIST:
         listgroup[listgroup_num].tasklist = new LinkList();
+        listgroup_num ++;
         break;
     case DLINKLIST:
         listgroup[listgroup_num].tasklist = new DLinkList();
+        listgroup_num ++;
         break;
     case SEQLIST:
         listgroup[listgroup_num].tasklist = new SeqList();
+        listgroup_num ++;
         break;
 
     default:
         break;
     }
+    return true;
 }
 
 
