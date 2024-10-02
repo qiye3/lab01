@@ -19,6 +19,9 @@
 #include <QTabWidget>
 #include <QToolBox>
 #include <QHeaderView>
+#include <qcombobox.h>
+#include <qdatetimeedit.h>
+#include <qspinbox.h>
 #include "../task/Task.hpp"
 #include "../task_manager/LinkList.hpp"
 #include "../task_manager/TaskList.hpp"
@@ -90,6 +93,10 @@ public slots:
 
     void onTaskSelected();
 
+    void onTaskChanged();
+
+    void onSearchClicked();
+
 private:
 
     // ------------内部指针----------//
@@ -100,12 +107,25 @@ private:
     QTableWidget *taskTableWidget;
 
     QWidget *detailsTool;
-    
+
 
     QMap<int, bool> columnSortOrder; // 用于记录每一列的排序顺序
 
+    // 搜索框
+    QLineEdit *searchEdit;
+
+    // 搜索结果
+    vector<int> searchResult; 
+
+    // 是否是搜索状态
+    bool isSearching;
+
     // 详情页标签
-    QLabel *nameLabel, *descriptionLabel, *priorityLabel, *statusLabel, *deadlineLabel, *createTimeLabel;
+    QLineEdit *nameEdit, *descriptionEdit;
+    QDateEdit *deadlineEdit;
+    QSpinBox *prioritySpinBox;
+    QComboBox *statusComboBox;
+    QLabel *createTimeLabel;
 
     // ------------大体UI-------------//
 
@@ -131,6 +151,8 @@ private:
     // -----------中间区域-----------//
 
     void setupTaskTable(QTableWidget *taskTable);
+
+    void searchTask(QString keyword, QTableWidget *taskTable);
 
 
     // -----------右侧区域-----------//

@@ -22,6 +22,10 @@ class Task{
         // 任务创建日期
         string createTime;
 
+        int taskID;
+
+        static int nextTaskID; 
+
     public:
         enum op{
             Name = 0,
@@ -56,7 +60,7 @@ class Task{
 
         void change_deadline(string new_deadline){deadline = new_deadline;};
 
-        void change_status(){isDone = !isDone;};
+        void change_status(bool newisDone){isDone = newisDone;};
 
         // --------获取变量的值-------//
 
@@ -71,6 +75,8 @@ class Task{
         bool get_status(){return isDone;};
 
         string get_create_time(){return createTime;};
+
+        int get_id(){return taskID;};
 
         // --------比较函数---------//
 
@@ -129,6 +135,5 @@ class Task{
 
 
 };
-
 
 #endif

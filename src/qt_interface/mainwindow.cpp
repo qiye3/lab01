@@ -5,6 +5,8 @@
 #include <QMessageBox>
 #include <QDateTime>
 #include <QInputDialog>
+#include <QSpinBox>
+#include <QComboBox>
 
 // -----------工具函数------------//
 
@@ -104,16 +106,38 @@ void MainWindow::setUpLeftListGroup(QListWidget *leftListGroup){
 
 // 添加列表按钮
 void MainWindow::onAddListClicked(QListWidget *ListWidget){
-    // 弹出对话框
+    // 弹出对话框获取列表名称
     bool ok;
-    QString text = QInputDialog::getText(this, tr("新建列表"),
-                                         tr("列表名称:"), QLineEdit::Normal,
-                                         tr("新列表"), &ok);
+    QString listName = QInputDialog::getText(this, tr("新建列表"),
+                                             tr("列表名称:"), QLineEdit::Normal,
+                                             tr("新列表"), &ok);
+    
+    if (!ok || listName.isEmpty()) return;
 
-                                        
-    if (ok && !text.isEmpty()) {
-        LeftGroup.append_list(ListGroup::SEQLIST, text.toStdString());
-        ListWidget->addItem(text);
+    // 弹出选择列表类型的对话框
+    QStringList listTypes = {"单链表", "双链表", "顺序表"};
+    bool typeOk;
+    QString selectedType = QInputDialog::getItem(this, tr("选择列表类型"),
+                                                 tr("请选择列表类型:"), listTypes, 
+                                                 0, false, &typeOk);
+
+    if (typeOk && !selectedType.isEmpty()) {
+        int listType;
+        if (selectedType == "单链表") {
+            listType = ListGroup::LINKLIST;
+        } else if (selectedType == "双链表") {
+            listType = ListGroup::DLINKLIST;
+        } else {
+            listType = ListGroup::SEQLIST;
+        }
+
+        // 向 LeftGroup 添加新列表
+        if (LeftGroup.append_list(listType, listName.toStdString())) {
+            ListWidget->addItem(listName);
+        } 
+        else {
+            QMessageBox::warning(this, tr("错误"), tr("列表数量已达上限"));
+        }
     }
 }
 
@@ -151,19 +175,28 @@ void MainWindow::setupMiddlePanel(QSplitter *splitter) {
     // 中间按钮栏
     QHBoxLayout *middleButtonLayout = new QHBoxLayout;
     
-    QPushButton *addTaskButton = new QPushButton("添加任务");
+    QPushButton *addTaskButton = new QPushButton("+");
     connect(addTaskButton, &QPushButton::clicked, this, [=](){onAddTaskClicked(taskTableWidget, leftGroupWidget);});
 
-    QPushButton *deleteTaskButton = new QPushButton("删除任务");
+    QPushButton *deleteTaskButton = new QPushButton("x");
     connect(deleteTaskButton, &QPushButton::clicked, this, [=](){onDeleteTaskClicked(taskTableWidget, leftGroupWidget);});
+
+
+    searchEdit = new QLineEdit;
+    searchEdit->setPlaceholderText("搜索");
+    QPushButton *searchButton = new QPushButton("搜索");
+    connect(searchButton, &QPushButton::clicked, this, &MainWindow::onSearchClicked);
 
     
     addTaskButton->setFixedSize(30, 30);
     deleteTaskButton->setFixedSize(30, 30);
+    searchButton->setFixedSize(30, 30);
 
     middleButtonLayout->addWidget(addTaskButton);
     middleButtonLayout->addWidget(deleteTaskButton);
     middleButtonLayout->addStretch();  // 空白部分
+    middleButtonLayout->addWidget(searchEdit);
+    middleButtonLayout->addWidget(searchButton);
 
     // 将分割线和按钮栏添加到布局
     middleLayout->addWidget(line2);  // 分割线在按钮栏上方
@@ -215,6 +248,8 @@ void MainWindow::setupTaskTable(QTableWidget *taskTable){
 
 // 随列表选择更新表格显示
 void MainWindow::updateTaskDisplay(QTableWidget *taskTable, QListWidget *ListWidget){
+    isSearching = false;
+
     int current_Index = ListWidget->currentRow();
     if(current_Index < 0) return;
 
@@ -369,6 +404,55 @@ QString MainWindow::getDeadlineInput(){
 }
 
 
+// 点击搜索按钮
+void MainWindow::onSearchClicked(){
+    QString keyword = searchEdit->text();
+    searchTask(keyword, taskTableWidget);
+}
+
+
+// 在当前列表里搜索任务
+void MainWindow::searchTask(QString keyword, QTableWidget *taskTable){
+    searchResult.clear();
+
+    int current_Index = leftGroupWidget->currentRow();
+    if(current_Index < 0) return;
+
+    TaskList *currentList = LeftGroup.get_list(current_Index);
+
+    QRegularExpression datePattern("^\\d{4}-\\d{2}-\\d{2}$");
+    QRegularExpressionMatch match = datePattern.match(keyword);
+    bool isDate = match.hasMatch();
+
+    taskTable->clearContents();
+    taskTable->setRowCount(0);
+
+    setupTaskTable(taskTable);
+
+    isSearching = true;
+
+    for(int i = 1; i <= currentList->Length(); i++){
+        Task t = currentList->get_task(i);
+        if(isDate){
+            if(QString::fromStdString(t.get_deadline()) == keyword){
+                addTaskToTable(t, taskTable);
+                searchResult.push_back(i);
+            }
+        }
+        else{
+            if(t.get_name().find(keyword.toStdString()) != string::npos || t.get_description().find(keyword.toStdString()) != string::npos){
+                addTaskToTable(t, taskTable);
+                searchResult.push_back(i);
+            }
+        }
+    }
+
+    if(taskTable->rowCount() == 0){
+        QMessageBox::information(this, "搜索结果", "没有找到匹配的任务");
+    }
+}
+
+
 // -----------右侧区域-------------//
 
 // 设置右侧区域
@@ -440,20 +524,39 @@ void MainWindow::setupDetailsTool(QWidget *parent) {
 
     QVBoxLayout *layout = new QVBoxLayout(parent);
 
-    // 创建任务详情标签
-    nameLabel = new QLabel;
-    descriptionLabel = new QLabel;
-    priorityLabel = new QLabel;
-    statusLabel = new QLabel;
-    deadlineLabel = new QLabel;
-    createTimeLabel = new QLabel;
+    // 使用 QLineEdit 代替 QLabel
+    nameEdit = new QLineEdit();
+    descriptionEdit = new QLineEdit();
+    
+    prioritySpinBox = new QSpinBox();
+    prioritySpinBox->setRange(1, 5);
+    
+    deadlineEdit = new QDateEdit();
+    deadlineEdit->setDisplayFormat("yyyy-MM-dd");
+    
+    statusComboBox = new QComboBox();
+    statusComboBox->addItem("未完成");
+    statusComboBox->addItem("已完成");
+    
+    createTimeLabel = new QLabel();
 
-    layout->addWidget(nameLabel);
-    layout->addWidget(descriptionLabel);
-    layout->addWidget(priorityLabel);
-    layout->addWidget(statusLabel);
-    layout->addWidget(deadlineLabel);
+
+    layout->addWidget(new QLabel("任务名称:"));
+    layout->addWidget(nameEdit);
+    layout->addWidget(new QLabel("任务描述:"));
+    layout->addWidget(descriptionEdit);
+    layout->addWidget(new QLabel("任务优先级:"));
+    layout->addWidget(prioritySpinBox);
+    layout->addWidget(new QLabel("任务状态:"));
+    layout->addWidget(statusComboBox);
+    layout->addWidget(new QLabel("任务截止日期:"));
+    layout->addWidget(deadlineEdit);
     layout->addWidget(createTimeLabel);
+    
+    // 保存修改的按钮
+    QPushButton *saveButton = new QPushButton("保存修改");
+    layout->addWidget(saveButton);
+    connect(saveButton, &QPushButton::clicked, this, &MainWindow::onTaskChanged);
     
     // 获取当前选中的任务
     int current_Index = leftGroupWidget->currentRow();
@@ -487,17 +590,57 @@ void MainWindow::onTaskSelected() {
     int currentRow = taskTableWidget->currentRow();
     if (currentRow < 0 || currentRow >= currentList->Length()) return;
 
-    Task t = currentList->get_task(currentRow + 1);
+    Task t;
+    if(isSearching){
+        t = currentList->get_task(searchResult[currentRow]);
+    }
+    else{
+        t = currentList->get_task(currentRow + 1);
+    }
     updateTaskDetails(t);
 }
 
 // 更新任务详情
 void MainWindow::updateTaskDetails(Task t) {
-    nameLabel->setText("任务名称: " + QString::fromStdString(t.get_name()));
-    descriptionLabel->setText("任务描述: " + QString::fromStdString(t.get_description()));
-    priorityLabel->setText("任务优先级: " + QString::number(t.get_priority()));
-    statusLabel->setText("任务状态: " + QString(t.get_status() ? "已完成" : "未完成"));
-    deadlineLabel->setText("任务截止日期: " + QString::fromStdString(t.get_deadline()));
+    nameEdit->setText(QString::fromStdString(t.get_name()));
+    descriptionEdit->setText(QString::fromStdString(t.get_description()));
+    prioritySpinBox->setValue(t.get_priority());
+    deadlineEdit->setDate(QDate::fromString(QString::fromStdString(t.get_deadline()), "yyyy-MM-dd"));
+    statusComboBox->setCurrentIndex(t.get_status() ? 1 : 0);
     createTimeLabel->setText("任务创建日期: " + QString::fromStdString(t.get_create_time()));
+}
+
+// 修改任务时调用
+void MainWindow::onTaskChanged(){
+    int current_Index = leftGroupWidget->currentRow();
+    if (current_Index < 0) return;
+
+    TaskList *currentList = LeftGroup.get_list(current_Index);
+    int currentRow = taskTableWidget->currentRow();
+    if (currentRow < 0 || currentRow >= currentList->Length()) return;
+
+    Task t;
+    if(isSearching){
+        t = currentList->get_task(searchResult[currentRow]);
+    }
+    else{
+        t = currentList->get_task(currentRow + 1);
+    }
+
+    t.change_task(nameEdit->text().toStdString(), descriptionEdit->text().toStdString(), prioritySpinBox->value(), deadlineEdit->text().toStdString());
+    
+    t.change_status(statusComboBox->currentText() == "已完成");
+
+    Task temp;
+    if(isSearching){
+        currentList->remove(searchResult[currentRow], temp);
+        currentList->insert(searchResult[currentRow], t);
+    }
+    else{
+        currentList->remove(currentRow + 1, temp);
+        currentList->insert(currentRow + 1, t);
+    }
+
+    updateTaskDisplay(taskTableWidget, leftGroupWidget);
 }
 

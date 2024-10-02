@@ -30,6 +30,8 @@ public:
 
     virtual Task get_task(int i) = 0;
 
+    virtual Task get_task_by_id(int id) = 0;
+
     // ----------排序-----------//
 
     virtual void sort(int op, bool ifreverse) = 0;
@@ -43,6 +45,8 @@ public:
     // ----------读取-----------//
 
     virtual void read_from_txt(string filename, string filepath = "") = 0;
+
+    void read_from_csv(string filename, string filepath = "");
 };
 
 #endif // TASKLIST_HPP

@@ -191,6 +191,18 @@ Task LinkList::get_task(int i){
     return p->task;
 }
 
+// 根据任务 ID 获取任务
+Task LinkList::get_task_by_id(int id){
+    Node *p = head->next;
+    while(p != nullptr){
+        if(p->task.get_id() == id){
+            return p->task;
+        }
+        p = p->next;
+    }
+    return Task();
+}
+
 // 排序
 void LinkList::sort(int op, bool ifreverse){
     if(length <= 1) return;

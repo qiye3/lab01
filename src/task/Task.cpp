@@ -1,16 +1,21 @@
 #include"Task.hpp"
 #include"../utils/Utils.hpp"
+#include<vector>
 
 #include<iostream>
 using namespace std;
 
+int Task::nextTaskID = 1;
+
 Task::Task(){
+    taskID = nextTaskID++;
     // create_task();
     isDone = false;
     createTime = current_time();
 }
 
 Task::Task(string name, string description, int priority, string deadline){
+    taskID = nextTaskID++;
     this->name = name;
     this->description = description;
     this->priority = priority;
@@ -28,6 +33,7 @@ void Task::change_task(string new_name, string new_description, int new_priority
     priority = new_priority;
     deadline = new_deadline;
 }
+
 
 void Task::create_task(){
     cout<<"请输入任务名称：";

@@ -40,6 +40,8 @@ class DLinkList: public TaskList{
 
         Task get_task(int i) override;
 
+        Task get_task_by_id(int id) override;
+
         // ----------排序-----------//
 
         void sort(int op, bool ifreverse) override;

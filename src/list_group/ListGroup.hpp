@@ -46,6 +46,8 @@ class ListGroup {
         TaskList *get_list(int i);
 
         string get_i_name(int i);
+
+        void read_from_csv(string filename, string filepath = "");
 };
 
 

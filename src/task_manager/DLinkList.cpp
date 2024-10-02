@@ -170,6 +170,18 @@ Task DLinkList::get_task(int i){
     return p->task;
 }
 
+Task DLinkList::get_task_by_id(int id){
+    DNode *p = head->next;
+    while(p != nullptr){
+        if(p->task.get_id() == id){
+            return p->task;
+        }
+        p = p->next;
+    }
+
+    return Task();
+}
+
 // ----------排序-----------//
 
 void DLinkList::sort(int op, bool ifreverse){

@@ -108,6 +108,16 @@ Task SeqList::get_task(int i){
     return data[i - 1];
 }
 
+// 根据任务 ID 获取任务
+Task SeqList::get_task_by_id(int id){
+    for(int i = 0; i < length; i++){
+        if(data[i].get_id() == id){
+            return data[i];
+        }
+    }
+    return Task();
+}
+
 // ----------排序-----------//
 
 void SeqList::sort(int op, bool ifreverse){
@@ -138,11 +148,11 @@ void SeqList::reverse(){
 
 // ----------筛选-----------//
 
-TaskList* SeqList::filt_list(int op, string value){
+TaskList* SeqList::filt_list(int op1, string value){
     SeqList *res = new SeqList();  // 创建新的 SeqList 对象
 
     for(int i = 0; i < length; i++){
-        if(data[i].filter(op, value)){
+        if(data[i].filter(op1, value)){
             res->append(data[i]);
         }
     }
