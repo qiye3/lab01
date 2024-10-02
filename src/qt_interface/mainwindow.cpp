@@ -3,6 +3,12 @@
 #include <QPushButton>
 #include <QMessageBox>
 #include <QDateTime>
+#include <QInputDialog>
+
+// -----------工具函数------------//
+
+
+
 
 // ------------大体UI-------------//
 
@@ -38,14 +44,18 @@ void MainWindow::setupMenuBar() {
     connect(exitAction, &QAction::triggered, this, &QMainWindow::close);
 }
 
+
+
+// ------------左侧区域-------------//
+
 // 设置左侧区域
 void MainWindow::setupLeftPanel(QSplitter *splitter) {
     QWidget *leftPanel = new QWidget;
     QVBoxLayout *leftLayout = new QVBoxLayout(leftPanel);
     
-    QListWidget *listList = new QListWidget;
-    connect(listList, &QListWidget::itemSelectionChanged, this, &MainWindow::updateTaskDisplay);
+    leftGroupWidget = new QListWidget;
 
+    setUpLeftListGroup(leftGroupWidget);
 
     // 添加分割线
     QFrame *line1 = new QFrame;
@@ -56,10 +66,10 @@ void MainWindow::setupLeftPanel(QSplitter *splitter) {
     QHBoxLayout *leftButtonLayout = new QHBoxLayout;
     
     QPushButton *newListButton = new QPushButton("+");
-    connect(newListButton, &QPushButton::clicked, this, &MainWindow::onAddListClicked);
+    connect(newListButton, &QPushButton::clicked, this, [=](){onAddListClicked(leftGroupWidget);});
 
     QPushButton *deleteListButton = new QPushButton("x");
-    connect(deleteListButton, &QPushButton::clicked, this, &MainWindow::onDeleteListClicked);
+    connect(deleteListButton, &QPushButton::clicked, this, [=](){onDeleteListClicked(leftGroupWidget);});
     
     QPushButton *toolboxButton = new QPushButton("...");
         
@@ -76,12 +86,46 @@ void MainWindow::setupLeftPanel(QSplitter *splitter) {
     // 将分割线和按钮栏添加到布局
     leftLayout->addWidget(line1);  // 分割线在按钮栏上方
     leftLayout->addLayout(leftButtonLayout);
-    leftLayout->addWidget(listList);
+    leftLayout->addWidget(leftGroupWidget);
 
     splitter->addWidget(leftPanel);
 
-    setupListList(listList);
 }
+
+// 初始化左侧任务列表
+void MainWindow::setUpLeftListGroup(QListWidget *leftListGroup){
+    int i = 0;
+    while(i < LeftGroup.Length()){
+        leftListGroup->addItem(QString::fromStdString(LeftGroup.get_i_name(i)));
+        i++;
+    }
+}
+
+// 添加列表按钮
+void MainWindow::onAddListClicked(QListWidget *ListWidget){
+    // 弹出对话框
+    bool ok;
+    QString text = QInputDialog::getText(this, tr("新建列表"),
+                                         tr("列表名称:"), QLineEdit::Normal,
+                                         tr("新列表"), &ok);
+
+                                        
+    if (ok && !text.isEmpty()) {
+        LeftGroup.append_list(ListGroup::SEQLIST, text.toStdString());
+        ListWidget->addItem(text);
+    }
+}
+
+// 删除列表按钮
+void MainWindow::onDeleteListClicked(QListWidget *ListWidget){
+    int currentIndex = ListWidget->currentRow();
+    if (currentIndex >= 0) {
+        LeftGroup.remove_list(currentIndex);
+        ListWidget->takeItem(currentIndex);
+    }
+}
+
+// ------------中间区域-------------//
 
 // 设置中间区域
 void MainWindow::setupMiddlePanel(QSplitter *splitter) {
@@ -89,9 +133,13 @@ void MainWindow::setupMiddlePanel(QSplitter *splitter) {
     QWidget *middlePanel = new QWidget;
     QVBoxLayout *middleLayout = new QVBoxLayout(middlePanel);
     QScrollArea *taskScrollArea = new QScrollArea;
-    QTableWidget *taskTable = new QTableWidget;
-    taskScrollArea->setWidget(taskTable);
+
+
+    taskTableWidget = new QTableWidget;
+    taskScrollArea->setWidget(taskTableWidget);
     taskScrollArea->setWidgetResizable(true);
+
+    setupTaskTable(taskTableWidget);
 
     // 分割线 - 直接放在布局上方
     QFrame *line2 = new QFrame;
@@ -102,10 +150,10 @@ void MainWindow::setupMiddlePanel(QSplitter *splitter) {
     QHBoxLayout *middleButtonLayout = new QHBoxLayout;
     
     QPushButton *addTaskButton = new QPushButton("添加任务");
-    connect(addTaskButton, &QPushButton::clicked, this, &MainWindow::onAddTaskClicked);
+    connect(addTaskButton, &QPushButton::clicked, this, [=](){onAddTaskClicked(taskTableWidget, leftGroupWidget);});
 
     QPushButton *deleteTaskButton = new QPushButton("删除任务");
-    connect(deleteTaskButton, &QPushButton::clicked, this, &MainWindow::onDeleteTaskClicked);
+    connect(deleteTaskButton, &QPushButton::clicked, this, [=](){onDeleteTaskClicked(taskTableWidget, leftGroupWidget);});
 
     
     addTaskButton->setFixedSize(30, 30);
@@ -121,9 +169,140 @@ void MainWindow::setupMiddlePanel(QSplitter *splitter) {
     middleLayout->addWidget(taskScrollArea);
 
     splitter->addWidget(middlePanel);
-
-    setupTaskTable(taskTable);
 }
+
+
+// 初始化表格布局
+void MainWindow::setupTaskTable(QTableWidget *taskTable){
+    taskTable->setColumnCount(6);
+
+    taskTable->setHorizontalHeaderLabels(QStringList() << "任务名称" << "任务描述" << "优先级" << "状态" << "截止日期" << "创建日期");
+
+    // 设置列宽
+    taskTable->setColumnWidth(0, 100);  // 名称列
+    taskTable->setColumnWidth(1, 200);  // 描述列
+    taskTable->setColumnWidth(2, 50);   // 优先级列
+    taskTable->setColumnWidth(3, 80);   // 状态列
+    taskTable->setColumnWidth(4, 120);  // 截止日期列
+    taskTable->setColumnWidth(5, 120);  // 创建时间列
+
+    taskTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+    taskTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    taskTable->setSelectionMode(QAbstractItemView::SingleSelection);
+
+    taskTable->setShowGrid(true);
+    taskTable->verticalHeader()->setVisible(false);
+    taskTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    taskTable->horizontalHeader()->setStretchLastSection(true);
+}
+
+
+// 随列表选择更新表格显示
+void MainWindow::updateTaskDisplay(QTableWidget *taskTable, QListWidget *ListWidget){
+    int current_Index = ListWidget->currentRow();
+    if(current_Index < 0) return;
+
+    TaskList *currentList = LeftGroup.get_list(current_Index);
+
+    taskTableWidget->clearContents();
+    taskTableWidget->setRowCount(0);
+
+    for(int i = 1; i <= currentList->Length(); i++){
+        addTaskToTable(currentList->get_task(i), taskTable);
+    }
+}
+
+// 向表格中添加显示任务
+void MainWindow::addTaskToTable(Task task, QTableWidget *taskTable){
+            
+    // 将任务添加到表格中
+    int newRow = taskTable->rowCount();
+
+    taskTable->insertRow(newRow);
+    
+    taskTable->setItem(newRow, 0, new QTableWidgetItem(QString::fromStdString(task.get_name()))); 
+    
+    taskTable->setItem(newRow, 1, new QTableWidgetItem(QString::fromStdString(task.get_description()))); 
+    
+    taskTable->setItem(newRow, 2, new QTableWidgetItem(QString::number(task.get_priority()))); 
+    
+    taskTable->setItem(newRow, 3, new QTableWidgetItem(task.get_status() ? "已完成" : "未完成"));
+    
+    taskTable->setItem(newRow, 4, new QTableWidgetItem(QString::fromStdString(task.get_deadline())));
+    
+    taskTable->setItem(newRow, 5, new QTableWidgetItem(QString::fromStdString(task.get_create_time())));    
+
+}
+
+// 添加任务按钮 
+void MainWindow::onAddTaskClicked(QTableWidget *taskTable, QListWidget *ListWidget) {
+    int current_Index = ListWidget->currentRow();
+    if(current_Index < 0) return;
+
+    TaskList *currentList = LeftGroup.get_list(current_Index);
+
+    // 弹出对话框
+    bool ok;
+    QString name = QInputDialog::getText(this, tr("新建任务"),
+                                         tr("任务名称:"), QLineEdit::Normal,
+                                         tr("新任务"), &ok);
+    if (!ok || name.isEmpty()) {
+        return;
+    }
+
+    QString description = QInputDialog::getText(this, tr("新建任务"),
+                                         tr("任务描述:"), QLineEdit::Normal,
+                                         tr("任务描述"), &ok);
+    if (!ok || description.isEmpty()) {
+        return;
+    }
+
+    int priority = QInputDialog::getInt(this, tr("新建任务"),
+                                         tr("任务优先级:"), 1, 1, 5, 1, &ok);
+    if (!ok) {
+        return;
+    }
+
+    QString deadline = QInputDialog::getText(this, tr("新建任务"),
+                                         tr("任务截止日期:"), QLineEdit::Normal,
+                                         tr("2021-01-01"), &ok);
+    if (!ok || deadline.isEmpty()) {
+        return;
+    }
+
+    Task newTask(name.toStdString(), description.toStdString(), priority, deadline.toStdString());
+    currentList->append(newTask);
+    addTaskToTable(newTask, taskTable);
+}
+
+
+// 删除任务按钮
+void MainWindow::onDeleteTaskClicked(QTableWidget *taskTable, QListWidget *ListWidget){
+    int current_Index = ListWidget->currentRow();
+    if(current_Index < 0) return;
+
+    TaskList *currentList = LeftGroup.get_list(current_Index);
+
+    Task t;
+
+    int currentRow = taskTable->currentRow();
+    if (currentRow >= 0 && currentRow < currentList->Length()) {
+        currentList->remove(currentRow + 1, t);
+        taskTable->removeRow(currentRow);
+    }
+}
+
+
+// 当List被点击的时候更新显示
+void MainWindow::onListClicked(QListWidgetItem *item){
+    int current_Index = leftGroupWidget->currentRow();
+    if (current_Index >= 0) {
+        updateTaskDisplay(taskTableWidget, leftGroupWidget);
+    }
+}
+
+
+// -----------右侧区域-------------//
 
 // 设置右侧区域
 void MainWindow::setupRightPanel(QSplitter *splitter) {
@@ -186,228 +365,4 @@ QTabWidget* MainWindow::createTabWidget(){
     // 你可以继续添加更多的标签页
 
     return tabWidget;
-}
-
-
-// ------------左侧区域-------------//
-
-// 初始化左侧任务列表
-void MainWindow::setupListList(QListWidget *listList){
-    listList->addItem("默认列表");
-    listList->addItem("工作");
-    listList->addItem("学习");
-    listList->addItem("生活");
-    listList->addItem("其他");
-}
-
-// 添加列表按钮
-void MainWindow::onAddListClicked(){
-    QListWidget *listList = findChild<QListWidget *>("listList");
-
-    // 添加新列表的名称
-    QString newListName = "新列表";
-    listList->addItem(newListName);
-
-    // 找到空闲的 Lists 结构体索引
-    for (int i = 0; i < MAX_LISTS; ++i) {
-        if (Lists[i].name.isEmpty()) {
-            // 存储列表名和对应的 LinkList
-            Lists[i].name = newListName;
-            Lists[i].list = listList;  // 关联到当前的 QListWidget
-            Lists[i].linklist = LinkList(); // 初始化新的 LinkList
-            break;
-        }
-    }
-}
-
-// 删除列表按钮
-void MainWindow::onDeleteListClicked(){
-    QListWidget *listList = findChild<QListWidget *>("listList");
-    QListWidgetItem *item = listList->currentItem();
-    
-    if (item) {
-        QString listName = item->text();
-
-        // 查找对应的 LinkList 并清理
-        for (int i = 0; i < MAX_LISTS; ++i) {
-            if (Lists[i].name == listName) {
-                // 清除这个 List 的信息
-                Lists[i].name.clear();
-                Lists[i].list = nullptr;  // 可以选择不再关联
-                Lists[i].linklist.~LinkList();  // 释放 LinkList
-                break;
-            }
-        }
-
-        // 删除 QListWidgetItem
-        delete item;
-    }
-}
-
-// 获取当前选中的列表
-MainWindow::List* MainWindow::getCurrentList(){
-    int currentIndex = listList->currentRow();
-
-    if (currentIndex >= 0 && currentIndex < MAX_LISTS) {
-        return &Lists[currentIndex];
-    }
-    return nullptr;
-
-}
-
-
-// ------------中间区域-------------//
-
-// 初始化表格布局
-void MainWindow::setupTaskTable(QTableWidget *taskTable){
-    taskTable->setColumnCount(6);
-
-    taskTable->setHorizontalHeaderLabels(QStringList() << "任务名称" << "任务描述" << "优先级" << "状态" << "截止日期" << "创建日期");
-
-    // 设置列宽
-    taskTable->setColumnWidth(0, 100);  // 名称列
-    taskTable->setColumnWidth(1, 200);  // 描述列
-    taskTable->setColumnWidth(2, 50);   // 优先级列
-    taskTable->setColumnWidth(3, 80);   // 状态列
-    taskTable->setColumnWidth(4, 120);  // 截止日期列
-    taskTable->setColumnWidth(5, 120);  // 创建时间列
-
-    taskTable->setSelectionBehavior(QAbstractItemView::SelectRows);
-    taskTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    taskTable->setSelectionMode(QAbstractItemView::SingleSelection);
-
-    taskTable->setShowGrid(true);
-    taskTable->verticalHeader()->setVisible(false);
-    taskTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    taskTable->horizontalHeader()->setStretchLastSection(true);
-}
-
-// 随列表选择更新表格显示
-void MainWindow::updateTaskDisplay(){
-
-    currentListItem = listList->currentItem();
-
-    currentList = getCurrentList();
-
-    // 清空表格
-    taskTable->setRowCount(0);
-
-    if (!currentListItem) {
-        return; // 如果没有选中任何列表，直接返回
-    }
-
-    for(int i = 1; i <= currentList->linklist.Length(); i++){
-        Task task = currentList->linklist.get_task(i);
-        addTaskToTable(task);
-    }
-}
-
-// 添加任务按钮 
-void MainWindow::onAddTaskClicked() {
-    currentListItem = listList->currentItem();
-    
-    if (!currentListItem) {
-        QMessageBox::warning(this, "警告", "请先选择一个列表!");
-        return;
-    }
-
-    // 从用户那里获取任务详情（可以用对话框或输入窗口）
-    Task newTask;
-    newTask.change_task("任务名称", "任务描述", 1, "2024-10-01");
-
-    // 获取当前选中的列表名
-    QString listName = currentListItem->text();
-    
-}
-
-// 向表格中添加任务
-void MainWindow::addTaskToTable(Task &task){
-
-    currentList->linklist.append(task);
-            
-    // 将任务添加到表格中
-    int newRow = taskTable->rowCount();
-
-    taskTable->insertRow(newRow);
-    
-    taskTable->setItem(newRow, 0, new QTableWidgetItem(QString::fromStdString(task.get_name()))); 
-    
-    taskTable->setItem(newRow, 1, new QTableWidgetItem(QString::fromStdString(task.get_description()))); 
-    
-    taskTable->setItem(newRow, 2, new QTableWidgetItem(QString::number(task.get_priority()))); 
-    
-    taskTable->setItem(newRow, 3, new QTableWidgetItem(task.get_status() ? "已完成" : "未完成"));
-    
-    taskTable->setItem(newRow, 4, new QTableWidgetItem(QString::fromStdString(task.get_deadline())));
-    
-    taskTable->setItem(newRow, 5, new QTableWidgetItem(QString::fromStdString(task.get_create_time())));    
-
-}
-
-
-// 删除任务按钮
-void MainWindow::onDeleteTaskClicked(){
-
-    // 获取左侧的 QListWidget
-    QListWidget *listList = findChild<QListWidget *>("listList");
-    
-    // 获取当前选中的列表项
-    QListWidgetItem *currentListItem = listList->currentItem();
-
-    // 获取中间的 QTableWidget
-    QTableWidget *taskTable = findChild<QTableWidget *>("taskTable");
-
-    int currentRow = taskTable->currentRow();
-    if (currentRow >= 0 && currentListItem) {
-        // 获取当前选中的列表名
-        QString listName = currentListItem->text();
-        
-        // 从表格中获取任务名称
-        QString taskName = taskTable->item(currentRow, 0)->text();
-
-        // 查找对应的 LinkList
-        for (int i = 0; i < MAX_LISTS; ++i) {
-            if (Lists[i].name == listName) {
-                // 从 LinkList 中删除任务
-                Lists[i].linklist.remove_by_name(taskName.toStdString()); 
-
-                // 从表格中删除任务
-                taskTable->removeRow(currentRow);
-                break; // 找到并删除后退出循环
-            }
-        }
-    }
-}
-
-
-// 初始化示例任务
-void MainWindow::initExampleTasks(){
-// 示例任务数据
-    struct ExampleTask {
-        QString name;
-        QString description;
-        int priority;
-        QString status;
-        QString deadline;
-        QString createTime;
-    };
-
-    QList<ExampleTask> exampleTasks = {
-        {"任务1", "描述1", 1, "未完成", "2024-10-05", "2024-09-30"},
-        {"任务2", "描述2", 2, "完成", "2024-10-10", "2024-09-29"},
-        {"任务3", "描述3", 3, "未完成", "2024-10-15", "2024-09-28"},
-        {"任务4", "描述4", 1, "未完成", "2024-10-20", "2024-09-27"},
-        {"任务5", "描述5", 2, "未完成", "2024-10-25", "2024-09-26"}
-    };
-
-    // 遍历示例任务，添加到 LinkList 和表格
-    for (const ExampleTask &task : exampleTasks) {
-        // 创建 Task 对象
-        Task newTask;
-        
-        newTask.change_task(task.name.toStdString(), task.description.toStdString(), task.priority, task.deadline.toStdString());
-
-        // 将任务添加到表格
-        addTaskToTable(newTask);
-    }
 }

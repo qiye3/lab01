@@ -3,9 +3,10 @@
 
 #include<iostream>
 #include"../task/Task.hpp"
+#include"TaskList.hpp"
 using namespace std;
 
-class LinkList{
+class LinkList: public TaskList{
     protected:
         struct Node{
             Task task;
@@ -19,49 +20,43 @@ class LinkList{
         LinkList();
         ~LinkList();
 
-        typedef bool (*compare_func)(const Task&, const Task&); 
-
         // --------基本操作---------//
 
-        bool append(Task t);
+        bool append(Task t) override;
 
-        bool insert(int i, Task t);
+        bool insert(int i, Task t) override;
 
         Node* get_by_i(int i);
 
         Node* get_by_name(string name);
 
-        bool remove(int i, Task& t);
+        bool remove(int i, Task& t) override;
 
-        bool remove_by_name(string name);
+        bool remove_by_name(string name) override;
 
-        bool isEmpty() const;
+        bool isEmpty() const override;
 
-        int Length() const;
+        int Length() const override;
 
-        void display() const;
+        void display() const override;
 
-        void clear();
+        void clear() override;
 
-        Task get_task(int i);
+        Task get_task(int i) override;
 
         // ----------排序-----------//
 
-        void sort(int op);
+        void sort(int op) override;
 
-        void reverse();
+        void reverse() override;
 
         // ----------筛选-----------//
 
-        LinkList filt_list(int op, string value); 
-
-        // ----------修改-----------//
-
-        bool change(int i, int op);
+        TaskList* filt_list(int op, string value) override; 
 
         // ----------读取-----------//
 
-        void read_from_txt(string filename, string filepath = "");
+        void read_from_txt(string filename, string filepath = "") override;
 };
 
 

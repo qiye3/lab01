@@ -36,6 +36,8 @@ class Task{
 
         Task();
 
+        Task(string name, string description, int priority, string deadline);
+
         ~Task();
 
         void create_task();

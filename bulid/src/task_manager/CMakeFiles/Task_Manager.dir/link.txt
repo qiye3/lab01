@@ -1,2 +1,0 @@
-E:\mingw64\bin\ar.exe qc libTask_Manager.a CMakeFiles/Task_Manager.dir/Task_Manager_autogen/mocs_compilation.cpp.obj CMakeFiles/Task_Manager.dir/LinkList.cpp.obj
-E:\mingw64\bin\ranlib.exe libTask_Manager.a

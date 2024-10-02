@@ -1,5 +1,4 @@
 #include"LinkList.hpp"
-#include"../utils/Utils.hpp"
 #include"../task/Task.hpp"
 
 #include<string>
@@ -246,19 +245,22 @@ void LinkList::reverse(){
 }
 
 // 筛选
-LinkList LinkList::filt_list(int op, string value){
-    LinkList res;
+TaskList* LinkList::filt_list(int op, string value) {
+    LinkList *res = new LinkList();  // 创建新的 LinkList 对象
     Node *p = head->next;
-    while(p != nullptr){
-        if(p->task.filter(op, value)){
-            res.append(p->task);
+
+    while (p != nullptr) {
+        if (p->task.filter(op, value)) {
+            res->append(p->task);  // 将符合条件的任务添加到结果链表中
         }
         p = p->next;
     }
-    if(res.isEmpty()){
-        cout<<"没有符合条件的任务"<<endl;
+
+    if (res->isEmpty()) {
+        cout << "没有符合条件的任务" << endl;
     }
-    return res;
+
+    return res;  // 返回基类指针
 }
 
 // 从txt文件读取

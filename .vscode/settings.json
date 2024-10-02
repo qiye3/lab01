@@ -55,6 +55,7 @@
         "qvboxlayout": "cpp",
         "qwidget": "cpp",
         "qmenubar": "cpp",
-        "qtablewidgetitem": "cpp"
+        "qtablewidgetitem": "cpp",
+        "variant": "cpp"
     }
 }

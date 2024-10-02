@@ -21,6 +21,11 @@
 #include <QHeaderView>
 #include "../task/Task.hpp"
 #include "../task_manager/LinkList.hpp"
+#include "../task_manager/TaskList.hpp"
+#include "../list_group/ListGroup.hpp"
+#include "TaskModel.hpp"
+
+using namespace std;
 
 #define MAX_LISTS 100
 
@@ -30,6 +35,8 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr) : QMainWindow(parent) {
+
+        LeftGroup.initialize_example_tasks();
 
         setupMenuBar();
         
@@ -43,8 +50,6 @@ public:
         setupMiddlePanel(splitter);
         setupRightPanel(splitter);
 
-        listList = findChild<QListWidget *>("listList");  
-        taskTable = findChild<QTableWidget *>("taskTable");
 
         QList<int> sizes;
         sizes << 2 * 100 << 8 * 100 << 3 * 100;  // 2:8:3 比例
@@ -57,35 +62,36 @@ public:
 
         this->showMaximized();
 
-    }
+        connect(leftGroupWidget, &QListWidget::itemClicked, this, &MainWindow::onListClicked);
+        
+
+    };
 
     ~MainWindow() {}
 
 public slots:
-    void onAddListClicked();
+    void onAddListClicked(QListWidget *ListWidget);
 
-    void onDeleteListClicked();
+    void onDeleteListClicked(QListWidget *ListWidget);
 
-    void onAddTaskClicked();
+    void onAddTaskClicked(QTableWidget *taskTable,QListWidget *ListWidget);
 
-    void onDeleteTaskClicked();
+    void onDeleteTaskClicked(QTableWidget *taskTable, QListWidget *ListWidget);
 
-    void addTaskToTable(Task &Task);
+    void addTaskToTable(Task Task, QTableWidget *taskTable);
 
-    void updateTaskDisplay();
+    void updateTaskDisplay(QTableWidget *taskTable, QListWidget *ListWidget);
 
+    void onListClicked(QListWidgetItem *item);
 
 private:
-    struct List {
-        QString name;
-        QListWidget *list;
-        LinkList linklist;
-    }Lists[MAX_LISTS];
 
-    QListWidget *listList;
-    QListWidgetItem *currentListItem;
-    List *currentList;
-    QTableWidget *taskTable;
+    // ------------内部指针-------------//
+
+    TaskModel *taskModel;
+    ListGroup LeftGroup;
+    QListWidget *leftGroupWidget;
+    QTableWidget *taskTableWidget;
 
     // ------------大体UI-------------//
 
@@ -101,18 +107,17 @@ private:
 
     QTabWidget* createTabWidget();
 
-    List* getCurrentList();
+    // ----------左侧区域------------//
+    
+    void setUpLeftListGroup(QListWidget *parent);
 
-    // ---------左侧区域------------//
 
-    void setupListList(QListWidget *listList);
-
-    // ---------中间区域------------//
+    // -----------中间区域-----------//
 
     void setupTaskTable(QTableWidget *taskTable);
     
-    void initExampleTasks();
     
 };
 
-#endif
+
+#endif // MAIN_WINDOW_HPP

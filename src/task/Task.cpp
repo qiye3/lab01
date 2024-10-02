@@ -10,6 +10,15 @@ Task::Task(){
     createTime = current_time();
 }
 
+Task::Task(string name, string description, int priority, string deadline){
+    this->name = name;
+    this->description = description;
+    this->priority = priority;
+    this->deadline = deadline;
+    isDone = false;
+    createTime = current_time();
+}
+
 Task::~Task(){
 }
 
