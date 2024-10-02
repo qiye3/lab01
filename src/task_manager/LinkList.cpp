@@ -192,7 +192,7 @@ Task LinkList::get_task(int i){
 }
 
 // 排序
-void LinkList::sort(int op){
+void LinkList::sort(int op, bool ifreverse){
     if(length <= 1) return;
 
     Node *p = head->next; //从第一个结点开始
@@ -208,7 +208,7 @@ void LinkList::sort(int op){
         q = head;
 
         while(p->next != lp){
-            if(!p->task.compare(p->next->task, op)){
+            if(!p->task.compare(p->next->task, op, ifreverse)){
                 q->next = p->next;
                 p->next = p->next->next;
                 q->next->next = p;

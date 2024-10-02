@@ -20,9 +20,12 @@ void ListGroup::initialize_example_tasks(){
     
     listgroup[0].tasklist = new LinkList();
 
-    listgroup[0].tasklist->append(Task("任务1", "描述1", 1, "2024-10-05"));
+    listgroup[0].tasklist->append(Task("任务3", "描述1", 1, "2024-10-05"));
     listgroup[0].tasklist->append(Task("任务2", "描述2", 2, "2024-10-10"));
-    listgroup[0].tasklist->append(Task("任务3", "描述3", 3, "2024-10-15"));
+    listgroup[0].tasklist->append(Task("任务1", "描述3", 3, "2024-10-15"));
+    listgroup[0].tasklist->append(Task("任务4", "描述4", 4, "2024-10-20"));
+    listgroup[0].tasklist->append(Task("任务5", "描述5", 5, "2024-10-25"));
+    listgroup[0].tasklist->append(Task("任务6", "描述6", 1, "2024-10-30"));
 
     listgroup_num ++;
 }

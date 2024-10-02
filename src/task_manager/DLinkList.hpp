@@ -42,7 +42,7 @@ class DLinkList: public TaskList{
 
         // ----------排序-----------//
 
-        void sort(int op) override;
+        void sort(int op, bool ifreverse) override;
 
         void reverse() override;
 

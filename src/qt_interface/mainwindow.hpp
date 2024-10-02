@@ -84,14 +84,28 @@ public slots:
 
     void onListClicked(QListWidgetItem *item);
 
+    void onHeaderClicked(int column);
+
+    void updateTaskDetails(Task t);
+
+    void onTaskSelected();
+
 private:
 
-    // ------------内部指针-------------//
+    // ------------内部指针----------//
 
     // TaskModel *taskModel;
     ListGroup LeftGroup;
     QListWidget *leftGroupWidget;
     QTableWidget *taskTableWidget;
+
+    QWidget *detailsTool;
+    
+
+    QMap<int, bool> columnSortOrder; // 用于记录每一列的排序顺序
+
+    // 详情页标签
+    QLabel *nameLabel, *descriptionLabel, *priorityLabel, *statusLabel, *deadlineLabel, *createTimeLabel;
 
     // ------------大体UI-------------//
 
@@ -111,10 +125,17 @@ private:
     
     void setUpLeftListGroup(QListWidget *parent);
 
+    QString getDeadlineInput();
+
 
     // -----------中间区域-----------//
 
     void setupTaskTable(QTableWidget *taskTable);
+
+
+    // -----------右侧区域-----------//
+
+    void setupDetailsTool(QWidget *parent);
     
     
 };

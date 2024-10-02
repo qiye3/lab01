@@ -110,13 +110,13 @@ Task SeqList::get_task(int i){
 
 // ----------排序-----------//
 
-void SeqList::sort(int op){
+void SeqList::sort(int op, bool ifreverse){
     if(length <= 1) return;
 
     Task temp;
     for(int i = 0; i < length - 1; i++){
         for(int j = 0; j < length - i - 1; j++){
-            if(!data[j].compare(data[j + 1], op)){
+            if(!data[j].compare(data[j + 1], op, ifreverse)){
                 temp = data[j];
                 data[j] = data[j + 1];
                 data[j + 1] = temp;

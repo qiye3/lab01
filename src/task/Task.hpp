@@ -25,10 +25,10 @@ class Task{
     public:
         enum op{
             Name = 0,
-            Priority = 1,
-            Deadline = 2,
+            Priority = 2,
+            Deadline = 4,
             Status = 3,
-            Description = 4,
+            Description = 1,
             CreateTime = 5
         };
 
@@ -74,26 +74,33 @@ class Task{
 
         // --------比较函数---------//
 
-        bool compare(Task& other, int o){
+        bool compare(Task& other, int o, bool ifreverse){
             switch(o){
                 // 任务名称：升序
                 case Name:
+                    if(ifreverse){
+                        return name > other.name;
+                    }
                     return name < other.name;
 
                 // 优先级：降序
                 case Priority:
+                    if(ifreverse) return priority < other.priority;
                     return priority > other.priority;
                 
                 // 截止日期：升序
                 case Deadline:
+                    if(ifreverse) return deadline > other.deadline;
                     return deadline < other.deadline;
 
                 // 状态：未完成在前
                 case Status:
+                    if(ifreverse) return isDone > other.isDone;
                     return isDone < other.isDone;
 
                 // 创建日期：升序
                 case CreateTime:
+                    if(ifreverse) return createTime > other.createTime;
                     return createTime < other.createTime;
 
                 default: return false; 

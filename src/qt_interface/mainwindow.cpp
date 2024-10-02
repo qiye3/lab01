@@ -1,5 +1,6 @@
 #include "mainwindow.hpp"
 #include <QVBoxLayout>
+#include <QDateEdit>
 #include <QPushButton>
 #include <QMessageBox>
 #include <QDateTime>
@@ -54,7 +55,7 @@ void MainWindow::setupLeftPanel(QSplitter *splitter) {
     QVBoxLayout *leftLayout = new QVBoxLayout(leftPanel);
     
     leftGroupWidget = new QListWidget;
-
+    leftGroupWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     setUpLeftListGroup(leftGroupWidget);
 
     // 添加分割线
@@ -138,6 +139,7 @@ void MainWindow::setupMiddlePanel(QSplitter *splitter) {
     taskTableWidget = new QTableWidget;
     taskScrollArea->setWidget(taskTableWidget);
     taskScrollArea->setWidgetResizable(true);
+    taskTableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
     setupTaskTable(taskTableWidget);
 
@@ -176,7 +178,9 @@ void MainWindow::setupMiddlePanel(QSplitter *splitter) {
 void MainWindow::setupTaskTable(QTableWidget *taskTable){
     taskTable->setColumnCount(6);
 
-    taskTable->setHorizontalHeaderLabels(QStringList() << "任务名称" << "任务描述" << "优先级" << "状态" << "截止日期" << "创建日期");
+    QStringList headers = QStringList() << "任务名称" << "任务描述" << "优先级" << "状态" << "截止日期" << "创建日期";
+
+    taskTable->setHorizontalHeaderLabels(headers);
 
     // 设置列宽
     taskTable->setColumnWidth(0, 100);  // 名称列
@@ -188,12 +192,24 @@ void MainWindow::setupTaskTable(QTableWidget *taskTable){
 
     taskTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     taskTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    taskTable->setSelectionMode(QAbstractItemView::SingleSelection);
+    taskTableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
     taskTable->setShowGrid(true);
     taskTable->verticalHeader()->setVisible(false);
     taskTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     taskTable->horizontalHeader()->setStretchLastSection(true);
+
+    // 自定义表头布局
+    QHeaderView *header = taskTable->horizontalHeader();
+    header->setSectionsClickable(true);  // 使表头项可以点击
+
+    // 初始化所有列的排序状态为升序
+    for (int i = 0; i < taskTable->columnCount(); ++i) {
+        columnSortOrder[i] = true;
+    }
+
+    connect(header, &QHeaderView::sectionClicked, this, &MainWindow::onHeaderClicked);
+
 }
 
 
@@ -268,12 +284,7 @@ void MainWindow::onAddTaskClicked(QTableWidget *taskTable, QListWidget *ListWidg
         return;
     }
 
-    QString deadline = QInputDialog::getText(this, tr("新建任务"),
-                                         tr("任务截止日期:"), QLineEdit::Normal,
-                                         tr("2021-01-01"), &ok);
-    if (!ok || deadline.isEmpty()) {
-        return;
-    }
+    QString deadline = getDeadlineInput();
 
     Task newTask(name.toStdString(), description.toStdString(), priority, deadline.toStdString());
     currentList->append(newTask);
@@ -307,6 +318,57 @@ void MainWindow::onListClicked(QListWidgetItem *item){
 }
 
 
+// 当点击表头时排序
+void MainWindow::onHeaderClicked(int column){
+
+    int current_Index = leftGroupWidget->currentRow();
+    if(current_Index < 0) return;
+
+    TaskList *currentList = LeftGroup.get_list(current_Index);
+
+    currentList->sort(column, columnSortOrder[column]);
+
+    updateTaskDisplay(taskTableWidget, leftGroupWidget);
+
+    columnSortOrder[column] = !columnSortOrder[column];
+}
+
+// 处理截止日期输入
+QString MainWindow::getDeadlineInput(){
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("新建任务"));
+
+    // 创建日期输入框
+    QDateEdit *dateEdit = new QDateEdit(&dialog);
+    dateEdit->setCalendarPopup(true);  // 允许使用日历弹出窗口
+    dateEdit->setDisplayFormat("yyyy-MM-dd");  // 设置显示格式
+    dateEdit->setDate(QDate::currentDate());  // 默认日期为当前日期
+
+    // 创建确认和取消按钮
+    QPushButton *okButton = new QPushButton(tr("确认"), &dialog);
+    QPushButton *cancelButton = new QPushButton(tr("取消"), &dialog);
+
+    // 设置布局
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->addWidget(new QLabel(tr("任务截止日期 (格式: YYYY-MM-DD):"), &dialog));
+    layout->addWidget(dateEdit);
+    layout->addWidget(okButton);
+    layout->addWidget(cancelButton);
+    dialog.setLayout(layout);
+
+    // 连接按钮信号
+    connect(okButton, &QPushButton::clicked, &dialog, &QDialog::accept);
+    connect(cancelButton, &QPushButton::clicked, &dialog, &QDialog::reject);
+
+    // 显示对话框
+    if (dialog.exec() == QDialog::Accepted) {
+        return dateEdit->date().toString("yyyy-MM-dd");  // 返回用户选择的日期
+    }
+
+    return QString();  // 返回空字符串表示取消输入
+}
+
+
 // -----------右侧区域-------------//
 
 // 设置右侧区域
@@ -329,12 +391,12 @@ QToolBox* MainWindow::createToolbox()
     // 创建 QToolBox 对象
     QToolBox *toolbox = new QToolBox;
 
-    // 创建第一个页面 - 任务详情/提醒
-    QWidget *detailsTool = new QWidget;
-    QVBoxLayout *detailsLayout = new QVBoxLayout(detailsTool);
-    QLabel *detailsLabel = new QLabel("任务详情/提醒内容");
-    detailsLayout->addWidget(detailsLabel);
-    toolbox->addItem(detailsTool, "任务详情/提醒");
+    // 创建第一个页面 - 任务详情
+    detailsTool = new QWidget;
+    setupDetailsTool(detailsTool);
+    toolbox->addItem(detailsTool, "任务详情");
+    connect(taskTableWidget, &QTableWidget::itemSelectionChanged, this, &MainWindow::onTaskSelected);
+
 
     // 创建第二个页面 - 任务提醒
     QWidget *remindersTool = new QWidget;
@@ -371,3 +433,71 @@ QTabWidget* MainWindow::createTabWidget(){
 
     return tabWidget;
 }
+
+
+// 设置任务详情工具
+void MainWindow::setupDetailsTool(QWidget *parent) {
+
+    QVBoxLayout *layout = new QVBoxLayout(parent);
+
+    // 创建任务详情标签
+    nameLabel = new QLabel;
+    descriptionLabel = new QLabel;
+    priorityLabel = new QLabel;
+    statusLabel = new QLabel;
+    deadlineLabel = new QLabel;
+    createTimeLabel = new QLabel;
+
+    layout->addWidget(nameLabel);
+    layout->addWidget(descriptionLabel);
+    layout->addWidget(priorityLabel);
+    layout->addWidget(statusLabel);
+    layout->addWidget(deadlineLabel);
+    layout->addWidget(createTimeLabel);
+    
+    // 获取当前选中的任务
+    int current_Index = leftGroupWidget->currentRow();
+    qDebug() << "Current row in leftGroupWidget:" << current_Index;
+
+    if (current_Index < 0){
+        return;
+    }
+
+    TaskList *currentList = LeftGroup.get_list(current_Index);
+    Task t;
+
+    int currentRow = taskTableWidget->currentRow();
+    qDebug() << "Current row in taskTableWidget:" << currentRow;
+
+    if (currentRow >= 0 && currentRow < currentList->Length()) {
+        t = currentList->get_task(currentRow + 1);
+    } 
+    else {
+        return;
+    }
+}
+
+
+// 选择任务时调用更新函数
+void MainWindow::onTaskSelected() {
+    int current_Index = leftGroupWidget->currentRow();
+    if (current_Index < 0) return;
+
+    TaskList *currentList = LeftGroup.get_list(current_Index);
+    int currentRow = taskTableWidget->currentRow();
+    if (currentRow < 0 || currentRow >= currentList->Length()) return;
+
+    Task t = currentList->get_task(currentRow + 1);
+    updateTaskDetails(t);
+}
+
+// 更新任务详情
+void MainWindow::updateTaskDetails(Task t) {
+    nameLabel->setText("任务名称: " + QString::fromStdString(t.get_name()));
+    descriptionLabel->setText("任务描述: " + QString::fromStdString(t.get_description()));
+    priorityLabel->setText("任务优先级: " + QString::number(t.get_priority()));
+    statusLabel->setText("任务状态: " + QString(t.get_status() ? "已完成" : "未完成"));
+    deadlineLabel->setText("任务截止日期: " + QString::fromStdString(t.get_deadline()));
+    createTimeLabel->setText("任务创建日期: " + QString::fromStdString(t.get_create_time()));
+}
+

@@ -32,7 +32,7 @@ public:
 
     // ----------排序-----------//
 
-    virtual void sort(int op) = 0;
+    virtual void sort(int op, bool ifreverse) = 0;
 
     virtual void reverse() = 0;
 

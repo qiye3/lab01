@@ -172,7 +172,7 @@ Task DLinkList::get_task(int i){
 
 // ----------排序-----------//
 
-void DLinkList::sort(int op){
+void DLinkList::sort(int op, bool ifreverse){
     if(length <= 1) return;
 
     DNode *p = head->next; //从第一个结点开始
@@ -187,7 +187,7 @@ void DLinkList::sort(int op){
         q = head;
 
         while(p->next != lp){
-            if(!p->task.compare(p->next->task, op)){
+            if(!p->task.compare(p->next->task, op, ifreverse)){
                 q->next = p->next;
                 p->next->prior = q;
                 p->prior = p->next;
