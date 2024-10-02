@@ -58,7 +58,7 @@ bool DLinkList::insert(int i, Task t){
     s->next = p->next;
     s->prior = p;
     p->next = s;
-    s->next->prior = s;
+    if(s->next != nullptr) s->next->prior = s;
 
     if(p == tail){
         tail = s;
@@ -83,7 +83,7 @@ bool DLinkList::remove(int i, Task& t){
     t = q->task;
 
     p->next = q->next;
-    q->next->prior = p;
+    if(q->next != nullptr) q->next->prior = p;
 
     delete q;
 
@@ -107,7 +107,7 @@ bool DLinkList::remove_by_name(string name){
     }
 
     p->prior->next = p->next;
-    p->next->prior = p->prior;
+    if(p->next != nullptr) p->next->prior = p->prior;
 
     if(p == tail){
         tail = p->prior;
@@ -201,11 +201,11 @@ void DLinkList::sort(int op, bool ifreverse){
         while(p->next != lp){
             if(!p->task.compare(p->next->task, op, ifreverse)){
                 q->next = p->next;
-                p->next->prior = q;
+                if(p->next != nullptr) p->next->prior = q;
                 p->prior = p->next;
                 p->next = p->next->next;
                 q->next->next = p;
-                p->next->prior = p;
+                if(p->next != nullptr) p->next->prior = p;
 
                 flag = true;
 

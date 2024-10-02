@@ -1,5 +1,6 @@
 #include "mainwindow.hpp"
 #include <QVBoxLayout>
+#include <QFile>
 #include <QDateEdit>
 #include <QPushButton>
 #include <QMessageBox>
@@ -7,13 +8,15 @@
 #include <QInputDialog>
 #include <QSpinBox>
 #include <QComboBox>
+#include <QFileDialog>
+#include <QTextStream>
 
 // -----------工具函数------------//
 
 
 
 
-// ------------大体UI-------------//
+// ------------菜单栏-------------//
 
 // 设置菜单栏
 void MainWindow::setupMenuBar() {
@@ -34,20 +37,173 @@ void MainWindow::setupMenuBar() {
     menuBar->addMenu(toolsMenu);
     menuBar->addMenu(helpMenu);
 
-    // 添加一些动作（Action）到菜单中
-    QAction *newFileAction = new QAction("新建", this);
-    QAction *openFileAction = new QAction("打开", this);
-    QAction *exitAction = new QAction("退出", this);
-    fileMenu->addAction(newFileAction);
-    fileMenu->addAction(openFileAction);
-    fileMenu->addSeparator();  // 添加分隔符
-    fileMenu->addAction(exitAction);
 
-    // 退出动作绑定关闭事件
+    // 创建导入子菜单
+    QMenu *importMenu = new QMenu("导入", this);
+    QAction *importTxtAction = new QAction("从TXT导入", this);
+    connect(importTxtAction, &QAction::triggered, this, &MainWindow::importFromTxt);
+    QAction *importCsvAction = new QAction("从CSV导入", this);
+    connect(importCsvAction, &QAction::triggered, this, &MainWindow::importFromCsv);
+    importMenu->addAction(importTxtAction);
+    importMenu->addAction(importCsvAction);
+    fileMenu->addMenu(importMenu);
+
+    // 导出当前任务列表
+    QMenu *exportMenu = new QMenu("导出当前任务列表", this);
+    QAction *exportTxtAction = new QAction("导出为TXT", this);
+    connect(exportTxtAction, &QAction::triggered, this, &MainWindow::exportToTxtSingle);
+    QAction *exportCsvAction = new QAction("导出为CSV", this);
+    connect(exportCsvAction, &QAction::triggered, this, &MainWindow::exportToCsvSingle);
+    exportMenu->addAction(exportTxtAction);
+    exportMenu->addAction(exportCsvAction);
+    fileMenu->addMenu(exportMenu);
+
+    // 导出所有任务列表
+    QMenu *exportAllMenu = new QMenu("导出所有任务列表", this);
+    QAction *exportAllTxtAction = new QAction("导出为TXT", this);
+    connect(exportAllTxtAction, &QAction::triggered, this, &MainWindow::exportToTxtAll);
+    QAction *exportAllCsvAction = new QAction("导出为CSV", this);
+    connect(exportAllCsvAction, &QAction::triggered, this, &MainWindow::exportToCsvAll);
+    exportAllMenu->addAction(exportAllTxtAction);
+    exportAllMenu->addAction(exportAllCsvAction);
+    fileMenu->addMenu(exportAllMenu);
+
+    // 添加退出动作
+    QAction *exitAction = new QAction("退出", this);
+    fileMenu->addSeparator();
+    fileMenu->addAction(exitAction);
     connect(exitAction, &QAction::triggered, this, &QMainWindow::close);
 }
 
+// 从TXT导入
+void MainWindow::importFromTxt() {
 
+    qDebug() << "Attempting to open directory dialog...";
+
+    // 打开文件选择对话框
+    QString filePath = QFileDialog::getOpenFileName(this, tr("选择文件"), QString(), tr("文本文件 (*.txt)"));
+
+    qDebug() << "Selected file path: " << filePath;
+
+    // 使用 QFileInfo 提取文件名
+    QFileInfo fileInfo(filePath);
+    QString fileName = fileInfo.fileName();
+    filePath = fileInfo.path();
+
+    qDebug() << "Selected file name: " << fileName;
+    qDebug() << "Selected file path: " << filePath;
+    
+    LeftGroup.read_from_txt(fileName.toStdString(), filePath.toStdString() + "/");
+
+    setUpLeftListGroup(leftGroupWidget);
+    
+    QMessageBox::information(this, "成功", "文件导入成功。");
+}
+
+// 从CSV导入
+void MainWindow::importFromCsv() {
+    // 打开文件选择对话框
+    QString filePath = QFileDialog::getOpenFileName(this, tr("选择文件"), QString(), tr("CSV 文件 (*.csv)"));
+
+    // 检查用户是否选择了文件
+    if (filePath.isEmpty()) {
+        return;
+    }
+
+    // 使用 QFileInfo 提取文件名
+    QFileInfo fileInfo(filePath);
+    QString fileName = fileInfo.fileName();
+    filePath = fileInfo.path();
+
+    qDebug() << "Selected file name: " << fileName;
+    qDebug() << "Selected file path: " << filePath;
+    
+    LeftGroup.read_from_csv(fileName.toStdString(), filePath.toStdString() + "/");
+
+    setUpLeftListGroup(leftGroupWidget);
+    
+    QMessageBox::information(this, "成功", "文件导入成功。");
+}
+
+// 导出当前任务列表为TXT
+void MainWindow::exportToTxtSingle() {
+    int current_Index = leftGroupWidget->currentRow();
+    if(current_Index < 0) return;
+
+    TaskList *currentList = LeftGroup.get_list(current_Index);
+
+    // 打开文件夹选择对话框
+    QString filePath = QFileDialog::getExistingDirectory(this, tr("选择保存文件夹"), QString());
+
+    // 检查用户是否选择了文件夹
+    if (filePath.isEmpty()) {
+        return;
+    }
+
+    string fileName = LeftGroup.get_i_name(current_Index);
+    
+    currentList->write_to_txt(fileName, filePath.toStdString() + "/");
+    
+    QMessageBox::information(this, "成功", "文件导出成功。");
+}
+
+// 导出当前任务列表为CSV
+void MainWindow::exportToCsvSingle() {
+    int current_Index = leftGroupWidget->currentRow();
+    if(current_Index < 0) return;
+
+    TaskList *currentList = LeftGroup.get_list(current_Index);
+
+    // 打开文件夹选择对话框
+    QString filePath = QFileDialog::getExistingDirectory(this, tr("选择保存文件夹"), QString());
+
+    // 检查用户是否选择了文件夹
+    if (filePath.isEmpty()) {
+        return;  // 如果用户未选择文件夹，返回
+    }
+
+    string fileName = LeftGroup.get_i_name(current_Index);
+
+    currentList->write_to_csv(fileName, filePath.toStdString() + "/");
+    
+    QMessageBox::information(this, "成功", "文件导出成功。");
+}
+
+// 导出所有任务列表为TXT
+void MainWindow::exportToTxtAll() {
+    QString filePath = QFileDialog::getExistingDirectory(this, tr("选择保存文件夹"), QString());
+
+    if (filePath.isEmpty()) {
+        return;
+    }
+    
+    string filenames[LeftGroup.Length()];
+    for(int i = 0; i < LeftGroup.Length(); i++){
+        filenames[i] = LeftGroup.get_i_name(i);
+    }
+    
+    LeftGroup.write_all_to_txt(filenames, filePath.toStdString() + "/");
+    
+    QMessageBox::information(this, "成功", "文件导出成功。");
+}
+
+// 导出所有任务列表为CSV
+void MainWindow::exportToCsvAll() {
+    QString filePath = QFileDialog::getExistingDirectory(this, tr("选择保存文件夹"), QString());
+
+    if (filePath.isEmpty()) {
+        return;
+    }
+    
+    string filenames[LeftGroup.Length()];
+    for(int i = 0; i < LeftGroup.Length(); i++){
+        filenames[i] = LeftGroup.get_i_name(i);
+    }
+    
+    LeftGroup.write_all_to_csv(filenames, filePath.toStdString() + "/");
+    
+    QMessageBox::information(this, "成功", "文件导出成功。");
+}
 
 // ------------左侧区域-------------//
 
@@ -73,16 +229,23 @@ void MainWindow::setupLeftPanel(QSplitter *splitter) {
 
     QPushButton *deleteListButton = new QPushButton("x");
     connect(deleteListButton, &QPushButton::clicked, this, [=](){onDeleteListClicked(leftGroupWidget);});
+
+    QPushButton *changeNameButton = new QPushButton("*");
+    connect(changeNameButton, &QPushButton::clicked, this, [=](){onChangeNameClicked(leftGroupWidget);});
+
     
     QPushButton *toolboxButton = new QPushButton("...");
+
         
     // 设置按钮为正方形
     newListButton->setFixedSize(30, 30);
     deleteListButton->setFixedSize(30, 30);
+    changeNameButton->setFixedSize(30, 30);
     toolboxButton->setFixedSize(30, 30);
 
     leftButtonLayout->addWidget(newListButton);
     leftButtonLayout->addWidget(deleteListButton);
+    leftButtonLayout->addWidget(changeNameButton);
     leftButtonLayout->addStretch();  // 空白部分
     leftButtonLayout->addWidget(toolboxButton);
 
@@ -97,6 +260,9 @@ void MainWindow::setupLeftPanel(QSplitter *splitter) {
 
 // 初始化左侧任务列表
 void MainWindow::setUpLeftListGroup(QListWidget *leftListGroup){
+    // 清空列表
+    leftListGroup->clear();
+
     int i = 0;
     while(i < LeftGroup.Length()){
         leftListGroup->addItem(QString::fromStdString(LeftGroup.get_i_name(i)));
@@ -150,6 +316,22 @@ void MainWindow::onDeleteListClicked(QListWidget *ListWidget){
     }
 }
 
+// 改名按钮
+void MainWindow::onChangeNameClicked(QListWidget *ListWidget){
+    int currentIndex = ListWidget->currentRow();
+    if (currentIndex >= 0) {
+        bool ok;
+        QString newName = QInputDialog::getText(this, tr("重命名列表"),
+                                                tr("新名称:"), QLineEdit::Normal,
+                                                ListWidget->currentItem()->text(), &ok);
+        if (ok && !newName.isEmpty()) {
+            LeftGroup.change_name(currentIndex, newName.toStdString());
+            ListWidget->currentItem()->setText(newName);
+        }
+    }
+}
+
+
 // ------------中间区域-------------//
 
 // 设置中间区域
@@ -166,6 +348,10 @@ void MainWindow::setupMiddlePanel(QSplitter *splitter) {
     taskTableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
     setupTaskTable(taskTableWidget);
+    
+    for(int i = 0; i < taskTableWidget->columnCount(); i++){
+        columnSortOrder[i] = false;
+    }
 
     // 分割线 - 直接放在布局上方
     QFrame *line2 = new QFrame;
@@ -235,11 +421,6 @@ void MainWindow::setupTaskTable(QTableWidget *taskTable){
     // 自定义表头布局
     QHeaderView *header = taskTable->horizontalHeader();
     header->setSectionsClickable(true);  // 使表头项可以点击
-
-    // 初始化所有列的排序状态为升序
-    for (int i = 0; i < taskTable->columnCount(); ++i) {
-        columnSortOrder[i] = true;
-    }
 
     connect(header, &QHeaderView::sectionClicked, this, &MainWindow::onHeaderClicked);
 
@@ -363,9 +544,9 @@ void MainWindow::onHeaderClicked(int column){
 
     currentList->sort(column, columnSortOrder[column]);
 
-    updateTaskDisplay(taskTableWidget, leftGroupWidget);
-
     columnSortOrder[column] = !columnSortOrder[column];
+
+    updateTaskDisplay(taskTableWidget, leftGroupWidget);
 }
 
 // 处理截止日期输入

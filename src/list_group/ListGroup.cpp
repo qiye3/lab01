@@ -125,6 +125,7 @@ TaskList *ListGroup::get_list(int i){
     return listgroup[i].tasklist;
 }
 
+// 获取第i个列表的名称
 string ListGroup::get_i_name(int i){
     if(i < 0 || i >= listgroup_num){
         // cout<<"i is out of range"<<endl;
@@ -134,45 +135,44 @@ string ListGroup::get_i_name(int i){
     return listgroup[i].Name;
 }
 
-// 从csv文件中读取
-void ListGroup::read_from_csv(string filename, string filepath){
-    ifstream in(filepath + filename);
-    if(!in){
-        cout<<"文件打开失败"<<endl;
+// 改变第i个列表的名称
+void ListGroup::change_name(int i, string name){
+    if(i < 0 || i >= listgroup_num){
+        cout<<"i is out of range"<<endl;
         return;
     }
 
+    listgroup[i].Name = name;
+}
+
+// 从csv文件中读取
+void ListGroup::read_from_csv(string filename, string filepath){
+
     append_list(LINKLIST, filename);
 
-    string name, description, deadline;
-    int priority;
+    listgroup[listgroup_num - 1].tasklist->read_from_csv(filename, filepath);
+}
 
-    while (true) {
-        // 读取任务名称
-        if (!std::getline(in, name, ',')) {
-            break;
-        }
 
-        // 读取任务描述
-        if (!std::getline(in, description, ',')) {
-            cout << "读取任务描述时出错" << endl;
-            return;
-        }
+// 从txt文件中读取
+void ListGroup::read_from_txt(string filename, string filepath){
+    append_list(LINKLIST, filename);
 
-        // 读取任务优先级
-        if (!(in >> priority)) {
-            cout << "读取任务优先级时出错" << endl;
-            return;
-        }
+    listgroup[listgroup_num - 1].tasklist->read_from_txt(filename, filepath);
+}
 
-        // 读取任务截止日期
-        if (!getline(in, deadline)) {
-            cout << "读取任务截止日期时出错" << endl;
-            return;
-        }
 
-        // 添加任务
-        Task t(name, description, priority, deadline);
-        listgroup[listgroup_num - 1].tasklist->append(t);
+// 将所有列表组写入csv文件
+void ListGroup::write_all_to_csv(string *filenames, string filepath){
+    for(int i = 0; i < listgroup_num; i++){
+        listgroup[i].tasklist->write_to_csv(filenames[i], filepath);
     }
 }
+
+// 将所有列表组写入txt文件
+void ListGroup::write_all_to_txt(string *filenames, string filepath){
+    for(int i = 0; i < listgroup_num; i++){
+        listgroup[i].tasklist->write_to_txt(filenames[i], filepath);
+    }
+}
+

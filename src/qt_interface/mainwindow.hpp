@@ -97,6 +97,8 @@ public slots:
 
     void onSearchClicked();
 
+    void onChangeNameClicked(QListWidget *ListWidget);
+
 private:
 
     // ------------内部指针----------//
@@ -140,6 +142,20 @@ private:
     QToolBox* createToolbox(); 
 
     QTabWidget* createTabWidget();
+
+    // ----------菜单区域------------//
+
+    void exportToTxtSingle();
+
+    void exportToCsvSingle();
+
+    void exportToTxtAll();
+
+    void exportToCsvAll();
+
+    void importFromTxt();
+
+    void importFromCsv();
 
     // ----------左侧区域------------//
     

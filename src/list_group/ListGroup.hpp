@@ -31,6 +31,8 @@ class ListGroup {
         ListGroup();
         ~ListGroup();
 
+        void change_name(int i, string name);
+
         void initialize_example_tasks();
 
         bool append_list(int ListType, string Name);
@@ -48,6 +50,12 @@ class ListGroup {
         string get_i_name(int i);
 
         void read_from_csv(string filename, string filepath = "");
+
+        void read_from_txt(string filename, string filepath = "");
+
+        void write_all_to_csv(string *filenames, string filepath = "");
+
+        void write_all_to_txt(string *filenames, string filepath = "");
 };
 
 

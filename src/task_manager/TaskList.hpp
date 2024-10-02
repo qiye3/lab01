@@ -47,6 +47,12 @@ public:
     virtual void read_from_txt(string filename, string filepath = "") = 0;
 
     void read_from_csv(string filename, string filepath = "");
+
+    // ----------写入-----------//
+
+    void write_to_csv(string filename, string filepath = "");
+
+    void write_to_txt(string filename, string filepath = "");
 };
 
 #endif // TASKLIST_HPP
