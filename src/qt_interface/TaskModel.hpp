@@ -1,5 +1,6 @@
 #include <QAbstractTableModel>
 #include <QVector>
+#include <qdatetime.h>
 
 class TaskModel : public QAbstractTableModel {
     Q_OBJECT

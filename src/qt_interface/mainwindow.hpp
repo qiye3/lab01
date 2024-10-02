@@ -23,7 +23,7 @@
 #include "../task_manager/LinkList.hpp"
 #include "../task_manager/TaskList.hpp"
 #include "../list_group/ListGroup.hpp"
-#include "TaskModel.hpp"
+// #include "TaskModel.hpp"
 
 using namespace std;
 
@@ -88,7 +88,7 @@ private:
 
     // ------------内部指针-------------//
 
-    TaskModel *taskModel;
+    // TaskModel *taskModel;
     ListGroup LeftGroup;
     QListWidget *leftGroupWidget;
     QTableWidget *taskTableWidget;
