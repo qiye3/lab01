@@ -42,8 +42,10 @@ void MainWindow::setupMenuBar() {
     QMenu *importMenu = new QMenu("导入", this);
     QAction *importTxtAction = new QAction("从TXT导入", this);
     connect(importTxtAction, &QAction::triggered, this, &MainWindow::importFromTxt);
+    connect(importTxtAction, &QAction::triggered, this, &MainWindow::refreshReminderTable);
     QAction *importCsvAction = new QAction("从CSV导入", this);
     connect(importCsvAction, &QAction::triggered, this, &MainWindow::importFromCsv);
+    connect(importCsvAction, &QAction::triggered, this, &MainWindow::refreshReminderTable);
     importMenu->addAction(importTxtAction);
     importMenu->addAction(importCsvAction);
     fileMenu->addMenu(importMenu);
@@ -83,6 +85,10 @@ void MainWindow::importFromTxt() {
     // 打开文件选择对话框
     QString filePath = QFileDialog::getOpenFileName(this, tr("选择文件"), QString(), tr("文本文件 (*.txt)"));
 
+    if(filePath.isEmpty()){
+        return;
+    }
+
     qDebug() << "Selected file path: " << filePath;
 
     // 使用 QFileInfo 提取文件名
@@ -97,7 +103,9 @@ void MainWindow::importFromTxt() {
 
     setUpLeftListGroup(leftGroupWidget);
     
-    QMessageBox::information(this, "成功", "文件导入成功。");
+    if(!filePath.isEmpty()){
+        QMessageBox::information(this, "成功", "文件导入成功。");
+    }
 }
 
 // 从CSV导入
@@ -122,7 +130,9 @@ void MainWindow::importFromCsv() {
 
     setUpLeftListGroup(leftGroupWidget);
     
-    QMessageBox::information(this, "成功", "文件导入成功。");
+    if(!filePath.isEmpty()){
+        QMessageBox::information(this, "成功", "文件导入成功。");
+    }
 }
 
 // 导出当前任务列表为TXT
@@ -229,9 +239,11 @@ void MainWindow::setupLeftPanel(QSplitter *splitter) {
 
     QPushButton *deleteListButton = new QPushButton("x");
     connect(deleteListButton, &QPushButton::clicked, this, [=](){onDeleteListClicked(leftGroupWidget);});
+    connect(deleteListButton, &QPushButton::clicked, this, &MainWindow::refreshReminderTable);
 
     QPushButton *changeNameButton = new QPushButton("*");
     connect(changeNameButton, &QPushButton::clicked, this, [=](){onChangeNameClicked(leftGroupWidget);});
+    connect(changeNameButton, &QPushButton::clicked, this, &MainWindow::refreshReminderTable);
 
     
     QPushButton *toolboxButton = new QPushButton("...");
@@ -363,9 +375,11 @@ void MainWindow::setupMiddlePanel(QSplitter *splitter) {
     
     QPushButton *addTaskButton = new QPushButton("+");
     connect(addTaskButton, &QPushButton::clicked, this, [=](){onAddTaskClicked(taskTableWidget, leftGroupWidget);});
+    connect(addTaskButton, &QPushButton::clicked, this, &MainWindow::refreshReminderTable);
 
     QPushButton *deleteTaskButton = new QPushButton("x");
     connect(deleteTaskButton, &QPushButton::clicked, this, [=](){onDeleteTaskClicked(taskTableWidget, leftGroupWidget);});
+    connect(deleteTaskButton, &QPushButton::clicked, this, &MainWindow::refreshReminderTable);
 
 
     searchEdit = new QLineEdit;
@@ -456,6 +470,8 @@ void MainWindow::addTaskToTable(Task task, QTableWidget *taskTable){
     int newRow = taskTable->rowCount();
 
     taskTable->insertRow(newRow);
+
+    bool status = task.get_status();
     
     taskTable->setItem(newRow, 0, new QTableWidgetItem(QString::fromStdString(task.get_name()))); 
     
@@ -467,8 +483,18 @@ void MainWindow::addTaskToTable(Task task, QTableWidget *taskTable){
     
     taskTable->setItem(newRow, 4, new QTableWidgetItem(QString::fromStdString(task.get_deadline())));
     
-    taskTable->setItem(newRow, 5, new QTableWidgetItem(QString::fromStdString(task.get_create_time())));    
+    taskTable->setItem(newRow, 5, new QTableWidgetItem(QString::fromStdString(task.get_create_time())));
 
+    setTaskTableColor(status, newRow);
+}
+
+// 设置表格颜色
+void MainWindow::setTaskTableColor(bool status, int row){
+    if(status){
+        for(int i = 0; i < taskTableWidget->columnCount(); i++){
+            taskTableWidget->item(row, i)->setBackground(QBrush(QColor::fromRgb(0, 255, 0, 100)));
+        }
+    }
 }
 
 // 添加任务按钮 
@@ -634,6 +660,30 @@ void MainWindow::searchTask(QString keyword, QTableWidget *taskTable){
 }
 
 
+// 改变任务状态
+void MainWindow::changeTaskStatus(){
+    int current_Index = leftGroupWidget->currentRow();
+    if(current_Index < 0) return;
+
+    TaskList *currentList = LeftGroup.get_list(current_Index);
+
+    Task t;
+
+    int currentRow = taskTableWidget->currentRow();
+    
+    if(isSearching){
+        t = currentList->get_task(searchResult[currentRow]);
+    }
+    else{
+        t = currentList->get_task(currentRow + 1);
+    }
+
+    t.change_status(!t.get_status());
+
+    updateTaskDisplay(taskTableWidget, leftGroupWidget);
+}
+
+
 // -----------右侧区域-------------//
 
 // 设置右侧区域
@@ -663,42 +713,17 @@ QToolBox* MainWindow::createToolbox()
     connect(taskTableWidget, &QTableWidget::itemSelectionChanged, this, &MainWindow::onTaskSelected);
 
 
-    // 创建第二个页面 - 任务提醒
-    QWidget *remindersTool = new QWidget;
-    QVBoxLayout *remindersLayout = new QVBoxLayout(remindersTool);
-    QLabel *remindersLabel = new QLabel("任务提醒内容");
-    remindersLayout->addWidget(remindersLabel);
-    toolbox->addItem(remindersTool, "任务提醒");
+    // 创建第二个页面 - 展示编辑
+    QWidget *showTool = new QWidget;
+    QVBoxLayout *showToolLayout = new QVBoxLayout(showTool);
+    QLabel *showLabel = new QLabel("任务展示编辑");
+    showToolLayout->addWidget(showLabel);
+    toolbox->addItem(showTool, "任务展示");
 
     // 你可以继续添加更多的页面
 
     return toolbox;
 }
-
-// 添加标签页布局
-QTabWidget* MainWindow::createTabWidget(){
-    // 创建 QTabWidget 对象
-    QTabWidget *tabWidget = new QTabWidget;
-
-    // 创建第一个标签页 - 扩展工具
-    QWidget *extensionsTab = new QWidget;
-    QVBoxLayout *extensionsLayout = new QVBoxLayout(extensionsTab);
-    QLabel *extensionsLabel = new QLabel("扩展工具内容");
-    extensionsLayout->addWidget(extensionsLabel);
-    tabWidget->addTab(extensionsTab, "扩展工具");
-
-    // 创建第二个标签页 - 更多工具
-    QWidget *moreToolsTab = new QWidget;
-    QVBoxLayout *moreToolsLayout = new QVBoxLayout(moreToolsTab);
-    QLabel *moreToolsLabel = new QLabel("更多工具内容");
-    moreToolsLayout->addWidget(moreToolsLabel);
-    tabWidget->addTab(moreToolsTab, "更多工具");
-
-    // 你可以继续添加更多的标签页
-
-    return tabWidget;
-}
-
 
 // 设置任务详情工具
 void MainWindow::setupDetailsTool(QWidget *parent) {
@@ -738,6 +763,7 @@ void MainWindow::setupDetailsTool(QWidget *parent) {
     QPushButton *saveButton = new QPushButton("保存修改");
     layout->addWidget(saveButton);
     connect(saveButton, &QPushButton::clicked, this, &MainWindow::onTaskChanged);
+    connect(saveButton, &QPushButton::clicked, this, &MainWindow::refreshReminderTable);
     
     // 获取当前选中的任务
     int current_Index = leftGroupWidget->currentRow();
@@ -760,7 +786,6 @@ void MainWindow::setupDetailsTool(QWidget *parent) {
         return;
     }
 }
-
 
 // 选择任务时调用更新函数
 void MainWindow::onTaskSelected() {
@@ -823,5 +848,111 @@ void MainWindow::onTaskChanged(){
     }
 
     updateTaskDisplay(taskTableWidget, leftGroupWidget);
+}
+
+// 添加标签页布局
+QTabWidget* MainWindow::createTabWidget(){
+    // 创建 QTabWidget 对象
+    QTabWidget *tabWidget = new QTabWidget;
+
+    // 创建第一个标签页 - 提醒工具
+    reminderTab = new QWidget;
+    setupReminderTab(reminderTab);
+    tabWidget->addTab(reminderTab, "提醒工具");
+    
+
+    // 创建第二个标签页 - 更多工具
+    QWidget *moreToolsTab = new QWidget;
+    QVBoxLayout *moreToolsLayout = new QVBoxLayout(moreToolsTab);
+    QLabel *moreToolsLabel = new QLabel("更多工具内容");
+    moreToolsLayout->addWidget(moreToolsLabel);
+    tabWidget->addTab(moreToolsTab, "更多工具");
+
+    // 你可以继续添加更多的标签页
+
+    return tabWidget;
+}
+
+// 设置提醒工具标签页
+void MainWindow::setupReminderTab(QWidget *parent) {
+    QVBoxLayout *layout = new QVBoxLayout(parent);
+
+    // 刷新按钮
+    QPushButton *refreshButton = new QPushButton("刷新");
+    connect(refreshButton, &QPushButton::clicked, this, &MainWindow::refreshReminderTable);
+    layout->addWidget(refreshButton);
+
+    // 提醒列表
+    reminderTable = new QTableWidget;
+    reminderTable->setColumnCount(3);
+    QStringList headers = QStringList() << "任务名称" << "剩余天数"<<"所属列表";
+    reminderTable->setHorizontalHeaderLabels(headers);
+    reminderTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+    reminderTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    reminderTable->setSelectionMode(QAbstractItemView::SingleSelection);
+
+    layout->addWidget(reminderTable);
+
+    // 设置列宽
+    reminderTable->setColumnWidth(0, 200);
+    reminderTable->setColumnWidth(1, 100);
+    reminderTable->setColumnWidth(2, 100);
+
+    refreshReminderTable();
+}
+
+// 刷新提醒列表
+void MainWindow::refreshReminderTable(){
+    reminderTable->clearContents();
+    reminderTable->setRowCount(0);
+
+    for(int i = 0; i < LeftGroup.Length(); i++){
+
+        TaskList *currentList = LeftGroup.get_list(i);
+        
+        for(int j = 1; j <= currentList->Length(); j++){
+            
+            Task t = currentList->get_task(j);
+            
+            int daysLeft = calculate_left_days(t.get_deadline());
+            
+            if(daysLeft <= 3 && t.get_status() == false){
+                int newRow = reminderTable->rowCount();
+                reminderTable->insertRow(newRow);
+
+                if(daysLeft >= 0){
+                    reminderTable->setItem(newRow, 0, new QTableWidgetItem(QString::fromStdString(t.get_name())));
+                    reminderTable->setItem(newRow, 1, new QTableWidgetItem(QString::number(daysLeft)));
+                    reminderTable->setItem(newRow, 2, new QTableWidgetItem(QString::fromStdString(LeftGroup.get_i_name(i))));
+
+                    // 设置一行的背景颜色
+                    if(daysLeft == 0){
+                        reminderTable->item(newRow, 0)->setBackground(Qt::yellow);
+                        reminderTable->item(newRow, 1)->setBackground(Qt::yellow);
+                        reminderTable->item(newRow, 2)->setBackground(Qt::yellow);
+                    }
+                }
+                else{
+                    reminderTable->setItem(newRow, 0, new QTableWidgetItem(QString::fromStdString(t.get_name())));
+                    reminderTable->setItem(newRow, 1, new QTableWidgetItem("已过期" + QString::number(-daysLeft) + "天"));
+                    reminderTable->setItem(newRow, 2, new QTableWidgetItem(QString::fromStdString(LeftGroup.get_i_name(i))));
+
+                    reminderTable->item(newRow, 0)->setBackground(Qt::gray);
+                    reminderTable->item(newRow, 1)->setBackground(Qt::gray);
+                    reminderTable->item(newRow, 2)->setBackground(Qt::gray);
+                }
+
+            }
+        }
+    }
+
+    sortReminderTable();
+}
+
+// 排序提醒列表
+void MainWindow::sortReminderTable(){
+    if(reminderTable->rowCount() == 0) return;
+
+    reminderTable->sortItems(1, Qt::AscendingOrder);
 }
 

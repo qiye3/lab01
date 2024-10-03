@@ -86,7 +86,7 @@ void LinkList::display() const{
 
 // 在第 i 个节点插入节点
 bool LinkList::insert(int i, Task t){
-    if(i < 1 || i > length){
+    if(i < 1 || i > length + 1){
         cout<<'i'<<" is out of range"<<endl;
         return false;
     }

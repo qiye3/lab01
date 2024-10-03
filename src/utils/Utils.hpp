@@ -5,6 +5,8 @@
 
 std::string current_time();
 
-bool compare_date();
+int calculate_left_days(std::string deadline);
+
+
 
 #endif // UTILS_HPP

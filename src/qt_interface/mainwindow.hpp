@@ -26,6 +26,7 @@
 #include "../task_manager/LinkList.hpp"
 #include "../task_manager/TaskList.hpp"
 #include "../list_group/ListGroup.hpp"
+#include "../utils/Utils.hpp"
 // #include "TaskModel.hpp"
 
 using namespace std;
@@ -99,6 +100,10 @@ public slots:
 
     void onChangeNameClicked(QListWidget *ListWidget);
 
+    void refreshReminderTable();
+
+    void changeTaskStatus();
+
 private:
 
     // ------------内部指针----------//
@@ -109,7 +114,8 @@ private:
     QTableWidget *taskTableWidget;
 
     QWidget *detailsTool;
-
+    QWidget *reminderTab;
+    QTableWidget *reminderTable;
 
     QMap<int, bool> columnSortOrder; // 用于记录每一列的排序顺序
 
@@ -170,12 +176,15 @@ private:
 
     void searchTask(QString keyword, QTableWidget *taskTable);
 
+    void setTaskTableColor(bool status, int row);
 
     // -----------右侧区域-----------//
 
     void setupDetailsTool(QWidget *parent);
     
-    
+    void setupReminderTab(QWidget *parent);
+
+    void sortReminderTable();
 };
 
 
