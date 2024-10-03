@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="checked">images/checked.png</file>
+        <file alias="unchecked">images/unchecked.png</file>
+        <file alias="favicon.ico">images/favicon.ico</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>images/checked.png</file>
+        <file>images/unchecked.png</file>
+    </qresource>
+    <qresource prefix="/new/prefix1">
+        <file>images/favicon.ico</file>
+    </qresource>
+</RCC>

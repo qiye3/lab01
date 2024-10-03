@@ -10,6 +10,7 @@
 #include <QComboBox>
 #include <QFileDialog>
 #include <QTextStream>
+#include <QCheckBox>
 
 // -----------工具函数------------//
 
@@ -479,7 +480,24 @@ void MainWindow::addTaskToTable(Task task, QTableWidget *taskTable){
     
     taskTable->setItem(newRow, 2, new QTableWidgetItem(QString::number(task.get_priority()))); 
     
-    taskTable->setItem(newRow, 3, new QTableWidgetItem(task.get_status() ? "已完成" : "未完成"));
+    // taskTable->setItem(newRow, 3, new QTableWidgetItem(task.get_status() ? "已完成" : "未完成"));
+
+    QCheckBox *checkBox = new QCheckBox;
+    checkBox->setChecked(status);
+
+    checkBox->setStyleSheet("QCheckBox::indicator { width: 50px; height: 50px; }");
+
+    QWidget *checkBoxWidget = new QWidget;
+    QVBoxLayout *playout = new QVBoxLayout(checkBoxWidget);
+    playout->addWidget(checkBox);
+    checkBoxWidget->setLayout(playout);
+    checkBox->setContentsMargins(0, 0, 0, 0);
+    playout->setAlignment(Qt::AlignCenter);
+    taskTable->setCellWidget(newRow, 3, checkBoxWidget);
+
+    connect(checkBox, &QCheckBox::stateChanged, this, &MainWindow::changeTaskStatus);
+    connect(checkBox, &QCheckBox::stateChanged, this, &MainWindow::refreshReminderTable);
+
     
     taskTable->setItem(newRow, 4, new QTableWidgetItem(QString::fromStdString(task.get_deadline())));
     
@@ -492,7 +510,8 @@ void MainWindow::addTaskToTable(Task task, QTableWidget *taskTable){
 void MainWindow::setTaskTableColor(bool status, int row){
     if(status){
         for(int i = 0; i < taskTableWidget->columnCount(); i++){
-            taskTableWidget->item(row, i)->setBackground(QBrush(QColor::fromRgb(0, 255, 0, 100)));
+            if(i == 3) continue;
+            taskTableWidget->item(row, i)->setBackground(QBrush(QColor(0, 255, 0, 50)));
         }
     }
 }
@@ -662,14 +681,19 @@ void MainWindow::searchTask(QString keyword, QTableWidget *taskTable){
 
 // 改变任务状态
 void MainWindow::changeTaskStatus(){
+    QCheckBox *checkBox = qobject_cast<QCheckBox *>(sender());
+    if (!checkBox) return;
+
+    // 获取复选框所在的行
+    int currentRow = taskTableWidget->indexAt(checkBox->parentWidget()->pos()).row();
+    if (currentRow < 0) return;
+
     int current_Index = leftGroupWidget->currentRow();
-    if(current_Index < 0) return;
+    if (current_Index < 0) return;
 
     TaskList *currentList = LeftGroup.get_list(current_Index);
 
     Task t;
-
-    int currentRow = taskTableWidget->currentRow();
     
     if(isSearching){
         t = currentList->get_task(searchResult[currentRow]);
@@ -678,7 +702,19 @@ void MainWindow::changeTaskStatus(){
         t = currentList->get_task(currentRow + 1);
     }
 
+    qDebug() << "status changed"<<checkBox->isChecked();
     t.change_status(!t.get_status());
+    qDebug() << "status changed"<<t.get_status();
+
+    Task temp;
+    if(isSearching){
+        currentList->remove(searchResult[currentRow], temp);
+        currentList->insert(searchResult[currentRow], t);
+    }
+    else{
+        currentList->remove(currentRow + 1, temp);
+        currentList->insert(currentRow + 1, t);
+    }
 
     updateTaskDisplay(taskTableWidget, leftGroupWidget);
 }
@@ -765,26 +801,26 @@ void MainWindow::setupDetailsTool(QWidget *parent) {
     connect(saveButton, &QPushButton::clicked, this, &MainWindow::onTaskChanged);
     connect(saveButton, &QPushButton::clicked, this, &MainWindow::refreshReminderTable);
     
-    // 获取当前选中的任务
-    int current_Index = leftGroupWidget->currentRow();
-    qDebug() << "Current row in leftGroupWidget:" << current_Index;
+    // // 获取当前选中的任务
+    // int current_Index = leftGroupWidget->currentRow();
+    // qDebug() << "Current row in leftGroupWidget:" << current_Index;
 
-    if (current_Index < 0){
-        return;
-    }
+    // if (current_Index < 0){
+    //     return;
+    // }
 
-    TaskList *currentList = LeftGroup.get_list(current_Index);
-    Task t;
+    // TaskList *currentList = LeftGroup.get_list(current_Index);
+    // Task t;
 
-    int currentRow = taskTableWidget->currentRow();
-    qDebug() << "Current row in taskTableWidget:" << currentRow;
+    // int currentRow = taskTableWidget->currentRow();
+    // qDebug() << "Current row in taskTableWidget:" << currentRow;
 
-    if (currentRow >= 0 && currentRow < currentList->Length()) {
-        t = currentList->get_task(currentRow + 1);
-    } 
-    else {
-        return;
-    }
+    // if (currentRow >= 0 && currentRow < currentList->Length()) {
+    //     t = currentList->get_task(currentRow + 1);
+    // } 
+    // else {
+    //     return;
+    // }
 }
 
 // 选择任务时调用更新函数
@@ -921,25 +957,25 @@ void MainWindow::refreshReminderTable(){
                 reminderTable->insertRow(newRow);
 
                 if(daysLeft >= 0){
-                    reminderTable->setItem(newRow, 0, new QTableWidgetItem(QString::fromStdString(t.get_name())));
-                    reminderTable->setItem(newRow, 1, new QTableWidgetItem(QString::number(daysLeft)));
-                    reminderTable->setItem(newRow, 2, new QTableWidgetItem(QString::fromStdString(LeftGroup.get_i_name(i))));
+                    reminderTable->setItem(newRow, 0, new CustomTableWidgetItem(QString::fromStdString(t.get_name())));
+                    reminderTable->setItem(newRow, 1, new CustomTableWidgetItem(QString::number(daysLeft)));
+                    reminderTable->setItem(newRow, 2, new CustomTableWidgetItem(QString::fromStdString(LeftGroup.get_i_name(i))));
 
                     // 设置一行的背景颜色
                     if(daysLeft == 0){
-                        reminderTable->item(newRow, 0)->setBackground(Qt::yellow);
-                        reminderTable->item(newRow, 1)->setBackground(Qt::yellow);
-                        reminderTable->item(newRow, 2)->setBackground(Qt::yellow);
+                        reminderTable->item(newRow, 0)->setBackground(QBrush(QColor(255, 255, 224, 50)));
+                        reminderTable->item(newRow, 1)->setBackground(QBrush(QColor(255, 255, 224, 50)));
+                        reminderTable->item(newRow, 2)->setBackground(QBrush(QColor(255, 255, 224, 50)));
                     }
                 }
                 else{
-                    reminderTable->setItem(newRow, 0, new QTableWidgetItem(QString::fromStdString(t.get_name())));
-                    reminderTable->setItem(newRow, 1, new QTableWidgetItem("已过期" + QString::number(-daysLeft) + "天"));
-                    reminderTable->setItem(newRow, 2, new QTableWidgetItem(QString::fromStdString(LeftGroup.get_i_name(i))));
+                    reminderTable->setItem(newRow, 0, new CustomTableWidgetItem(QString::fromStdString(t.get_name())));
+                    reminderTable->setItem(newRow, 1, new CustomTableWidgetItem("已过期" + QString::number(-daysLeft) + "天"));
+                    reminderTable->setItem(newRow, 2, new CustomTableWidgetItem(QString::fromStdString(LeftGroup.get_i_name(i))));
 
-                    reminderTable->item(newRow, 0)->setBackground(Qt::gray);
-                    reminderTable->item(newRow, 1)->setBackground(Qt::gray);
-                    reminderTable->item(newRow, 2)->setBackground(Qt::gray);
+                    reminderTable->item(newRow, 0)->setBackground(QBrush(QColor(211, 211, 211, 50)));
+                    reminderTable->item(newRow, 1)->setBackground(QBrush(QColor(211, 211, 211, 50)));
+                    reminderTable->item(newRow, 2)->setBackground(QBrush(QColor(211, 211, 211, 50)));
                 }
 
             }

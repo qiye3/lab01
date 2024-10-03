@@ -19,6 +19,7 @@
 #include <QTabWidget>
 #include <QToolBox>
 #include <QHeaderView>
+#include <QRegularExpression>
 #include <qcombobox.h>
 #include <qdatetimeedit.h>
 #include <qspinbox.h>
@@ -187,5 +188,41 @@ private:
     void sortReminderTable();
 };
 
+// 自定义排序逻辑的 QTableWidgetItem
+class CustomTableWidgetItem : public QTableWidgetItem {
+public:
+    CustomTableWidgetItem(const QString &text) : QTableWidgetItem(text) {}
+
+    bool operator<(const QTableWidgetItem &other) const override {
+        bool ok1, ok2;
+        int value1 = text().remove(QRegularExpression("[^0-9-]")).toInt(&ok1);
+        int value2 = other.text().remove(QRegularExpression("[^0-9-]")).toInt(&ok2);
+
+        // 若第一个值是负数，放到最后
+        if (ok1 && ok2) {
+            if (value1 < 0) return false; // 当前为负数，后移
+            if (value2 < 0) return true;  // 其他为负数，当前留在前
+            return value1 < value2; // 正数比较
+        }
+
+        return QTableWidgetItem::operator<(other); // 默认比较
+    }
+};
+
+// 自定义的可点击标签
+class ClickableLabel : public QLabel {
+    Q_OBJECT
+public:
+    explicit ClickableLabel(QWidget *parent = nullptr) : QLabel(parent) {}
+
+signals:
+    void clicked(); // 自定义信号
+
+protected:
+    void mousePressEvent(QMouseEvent *event) override {
+        emit clicked(); // 发出点击信号
+        QLabel::mousePressEvent(event); // 调用基类的事件处理
+    }
+};
 
 #endif // MAIN_WINDOW_HPP
