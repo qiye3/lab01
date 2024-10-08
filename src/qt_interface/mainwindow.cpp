@@ -362,9 +362,9 @@ void MainWindow::setupMiddlePanel(QSplitter *splitter) {
 
     setupTaskTable(taskTableWidget);
     
-    for(int i = 0; i < taskTableWidget->columnCount(); i++){
-        columnSortOrder[i] = false;
-    }
+    // for(int i = 0; i < taskTableWidget->columnCount(); i++){
+    //     columnSortOrder[i] = false;
+    // }
 
     // 分割线 - 直接放在布局上方
     QFrame *line2 = new QFrame;
@@ -439,6 +439,10 @@ void MainWindow::setupTaskTable(QTableWidget *taskTable){
 
     connect(header, &QHeaderView::sectionClicked, this, &MainWindow::onHeaderClicked);
 
+    for(int i = 0; i < taskTable->columnCount(); i++){
+        columnSortOrder[i] = false;
+    }
+
 }
 
 
@@ -455,7 +459,7 @@ void MainWindow::updateTaskDisplay(QTableWidget *taskTable, QListWidget *ListWid
     taskTableWidget->setRowCount(0);
 
     if(currentList->Length() == 0){
-        setupTaskTable(taskTable);
+        taskTable->clearContents();
         return;
     }
 
@@ -587,9 +591,14 @@ void MainWindow::onHeaderClicked(int column){
 
     TaskList *currentList = LeftGroup.get_list(current_Index);
 
+    qDebug() << "Column clicked: " << column;
+    qDebug() << "Current sort order: " << columnSortOrder[column];
+
     currentList->sort(column, columnSortOrder[column]);
 
     columnSortOrder[column] = !columnSortOrder[column];
+
+    qDebug() << "New sort order: " << columnSortOrder[column];
 
     updateTaskDisplay(taskTableWidget, leftGroupWidget);
 }
@@ -653,7 +662,7 @@ void MainWindow::searchTask(QString keyword, QTableWidget *taskTable){
     taskTable->clearContents();
     taskTable->setRowCount(0);
 
-    setupTaskTable(taskTable);
+    taskTable->clearContents();
 
     isSearching = true;
 
@@ -963,9 +972,9 @@ void MainWindow::refreshReminderTable(){
 
                     // 设置一行的背景颜色
                     if(daysLeft == 0){
-                        reminderTable->item(newRow, 0)->setBackground(QBrush(QColor(255, 255, 224, 50)));
-                        reminderTable->item(newRow, 1)->setBackground(QBrush(QColor(255, 255, 224, 50)));
-                        reminderTable->item(newRow, 2)->setBackground(QBrush(QColor(255, 255, 224, 50)));
+                        reminderTable->item(newRow, 0)->setBackground(QBrush(QColor(255, 255, 224, 100)));
+                        reminderTable->item(newRow, 1)->setBackground(QBrush(QColor(255, 255, 224, 100)));
+                        reminderTable->item(newRow, 2)->setBackground(QBrush(QColor(255, 255, 224, 100)));
                     }
                 }
                 else{

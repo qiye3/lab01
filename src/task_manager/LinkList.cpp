@@ -237,6 +237,7 @@ void LinkList::sort(int op, bool ifreverse){
 
         lp = p;
     }
+    cout<<"Sorted by "<<ifreverse<<endl;
 }
 
 // 反转

@@ -118,7 +118,8 @@ private:
     QWidget *reminderTab;
     QTableWidget *reminderTable;
 
-    QMap<int, bool> columnSortOrder; // 用于记录每一列的排序顺序
+    // 用于记录每一列的排序顺序
+    QMap<int, bool> columnSortOrder;
 
     // 搜索框
     QLineEdit *searchEdit;
